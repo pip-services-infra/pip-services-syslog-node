@@ -1,0 +1,6 @@
+/node_modules
+/npm-debug.log
+/.idea
+/config/config.json
+/data/syslog.test.json
+/dist

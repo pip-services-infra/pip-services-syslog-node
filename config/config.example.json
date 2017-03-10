@@ -1,0 +1,70 @@
+{    
+    "logs": {
+        "descriptor": {
+            "type": "console"
+        },
+        "options": {
+            "level": 10
+        }
+    },
+    
+    "counters": {
+        "descriptor": {
+            "type": "log"
+        },
+        "options": {
+            "timeout": 10000
+        }
+    },
+    
+    "persistence": {
+        "descriptor": {
+            "group": "pip-services-syslog",
+            "type": "mongodb"
+        },
+        "connection": {
+            "uri": "mongodb://localhost/pipservicestest"
+        },
+        "options": {
+            "server": {
+                "poolSize": 4,
+                "socketOptions": {
+                    "keepAlive": 1,
+                    "connectTimeoutMS": 5000
+                },
+                "auto_reconnect": true
+            },
+            "debug": false        
+        }
+    },
+    
+    "clients": [],
+    
+    "services": [
+        {
+            "descriptor": {
+                "group": "pip-services-syslog",
+                "type": "seneca",
+                "version": 1
+            },
+            "endpoint": {
+                "protocol": "tcp",
+                "host": "localhost",
+                "port": 8803
+            }
+        },
+        {
+            "descriptor": {
+                "group": "pip-services-syslog",
+                "type": "rest",
+                "version": 1
+            },
+            "endpoint": {
+                "protocol": "http",
+                "host": "localhost",
+                "port": 8003
+            }
+        }
+    ]
+    
+}

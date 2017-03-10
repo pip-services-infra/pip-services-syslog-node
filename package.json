@@ -1,0 +1,51 @@
+{
+    "name": "pip-services-syslog-node",
+    "version": "1.0.0",
+    "author": "Digital Living Software Corp. <www.digitallivingsoftware.com>",
+    "description": "System events microservice in Node.js",
+    "contributors": [
+        {
+            "name": "Sergey Seroukhov",
+            "email": "seroukhov@gmail.com"
+        }
+    ],
+    "main": "bin/seneca.js",
+    "keywords": [
+        "pip.services", 
+        "system",
+        "logging"
+    ],
+    "noAnalyze": true,
+    "repository" : {
+        "type": "git",
+        "url": "ssh://git@github.com:pip-services/pip-services-syslog-node.git"
+    },
+    "license": "MIT",
+    "engines": {
+        "node": ">=0.6.14"
+    },
+    "private": true,
+    "scripts": {
+        "build": "tsc",
+        "watch": "tsc --watch",
+        "launch": "node run",
+        "relaunch": "tsc && node run",
+        "test": "mocha -t 10000 -R spec -u tdd --recursive ./lib/test",
+        "retest": "tsc && mocha -t 10000 -R spec -u tdd --recursive ./lib/test",
+        "benchmark": "matcha -R clean -I tdd ./lib/benchmark/run.js",
+        "rebenchmark": "tsc && matcha -R clean -I tdd ./lib/benchmark/run.js"
+    },
+    "dependencies": {
+        "lodash": "*",
+        "async": "*",
+        "pip-services-runtime-node": "*"
+    },
+    "devDependencies": {
+        "mongoose": "*",
+        "seneca": "*",
+        "restify": "*",
+        "mocha": "*",
+        "chai": "*",
+        "matcha": "*"
+    }
+}
