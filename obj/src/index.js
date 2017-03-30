@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./data/version1/index"));
 __export(require("./persistence/index"));
 __export(require("./logic/index"));
+__export(require("./services/version1/index"));
 __export(require("./build/index"));
 module.exports = require('./container/EventLogSenecaPlugin');
 //# sourceMappingURL=index.js.map
