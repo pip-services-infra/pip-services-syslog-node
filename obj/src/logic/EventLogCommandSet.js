@@ -13,10 +13,10 @@ class EventLogCommandSet extends pip_services_commons_node_1.CommandSet {
         this.addCommand(this.makeWriteCommand());
     }
     makeReadCommand() {
-        return new pip_services_commons_node_2.Command("get_events_page_by_filter", null, (correlationId, args, callback) => {
+        return new pip_services_commons_node_2.Command("get_events", null, (correlationId, args, callback) => {
             let filter = pip_services_commons_node_3.FilterParams.fromValue(args.get("filter"));
             let paging = pip_services_commons_node_4.PagingParams.fromValue(args.get("paging"));
-            this._logic.getEventsPageByFilter(correlationId, filter, paging, callback);
+            this._logic.getEvents(correlationId, filter, paging, callback);
         });
     }
     makeWriteCommand() {

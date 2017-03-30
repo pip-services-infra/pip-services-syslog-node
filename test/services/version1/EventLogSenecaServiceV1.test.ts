@@ -128,7 +128,7 @@ suite('EventLogSenecaServiceV1', ()=> {
                 seneca.act(
                     {
                         role: 'eventlog',
-                        cmd: 'get_events_page_by_filter' 
+                        cmd: 'get_events' 
                     },
                     (err, page) => {
                         assert.isNull(err);

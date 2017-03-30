@@ -39,7 +39,7 @@ export class EventLogController implements IConfigurable, IReferenceable, IComma
         return this._commandSet;
     }
 
-    public getEventsPageByFilter(correlationId: string, filter: FilterParams, paging: PagingParams, 
+    public getEvents(correlationId: string, filter: FilterParams, paging: PagingParams, 
         callback: (err: any, page: DataPage<SystemEventV1>) => void): void {
         this._persistence.getPageByFilter(correlationId, filter, paging, callback);
     }

@@ -24,12 +24,12 @@ export class EventLogCommandSet extends CommandSet {
 
 	private makeReadCommand(): ICommand {
 		return new Command(
-			"get_events_page_by_filter",
+			"get_events",
 			null,
 			(correlationId: string, args: Parameters, callback: (err: any, result: any) => void) => {
 				let filter = FilterParams.fromValue(args.get("filter"));
 				let paging = PagingParams.fromValue(args.get("paging"));
-				this._logic.getEventsPageByFilter(correlationId, filter, paging, callback);
+				this._logic.getEvents(correlationId, filter, paging, callback);
 			}
 		);
 	}

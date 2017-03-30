@@ -114,7 +114,7 @@ suite('EventLogRestServiceV1', ()=> {
             },
         // Get all activities
             (callback) => {
-                rest.post('/eventlog/get_events_page_by_filter',
+                rest.post('/eventlog/get_events',
                     {},
                     (err, req, res, page) => {
                         assert.isNull(err);

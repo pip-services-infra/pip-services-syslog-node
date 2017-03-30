@@ -34,7 +34,7 @@ Represents a paged result with subset of requested SystemEventV1 objects
 
 ## Operations
 
-### <a name="operation1"></a> Method: 'POST', route '/eventlog/read'
+### <a name="operation1"></a> Method: 'POST', route '/eventlog/get_events'
 
 Retrieves a list of system events by specified criteria
 
@@ -54,7 +54,7 @@ Retrieves a list of system events by specified criteria
 **Response body:**
 Array of SystemEventV1 objects or SystemEventV1Page object if paging was requested or error
 
-### <a name="operation2"></a> Method: 'POST', route '/eventlog/write'
+### <a name="operation2"></a> Method: 'POST', route '/eventlog/log_event'
 
 Log system event
 

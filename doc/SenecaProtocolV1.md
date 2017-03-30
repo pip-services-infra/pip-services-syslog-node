@@ -33,7 +33,7 @@ seneca.act(
 
 * [SystemEventV1 class](#class1)
 * [DataPage<SystemEventV1> class](#class2)
-* [cmd: 'get_events_page_by_filter'](#operation1)
+* [cmd: 'get_events'](#operation1)
 * [cmd: 'log_event'](#operation2)
 
 ## Data types
@@ -62,7 +62,7 @@ Represents a paged result with subset of requested SystemEventV1 objects
 
 ## Operations
 
-### <a name="operation1"></a> Cmd: 'get_events_page_by_filter'
+### <a name="operation1"></a> Cmd: 'get_events'
 
 Retrieves a list of system events by specified criteria
 
