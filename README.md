@@ -1,13 +1,13 @@
-# SysLog Microservice
+# Event Log Microservice
 
-This is a system activity logging microservice from Pip.Services library. 
-It logs important system activities like starts and stops of servers,
-upgrades to a new version, fatal system errors.
+This is a system event logging microservice from Pip.Services library. 
+It logs important system events like starts and stops of servers,
+upgrades to a new version, fatal system errors or key business transactions.
 
 The microservice currently supports the following deployment options:
-* Deployment platforms: Standalone Process, Seneca
+* Deployment platforms: Standalone Process, Seneca Plugin
 * External APIs: HTTP/REST, Seneca
-* Persistence: Flat Files, MongoDB
+* Persistence: Memory, Flat Files, MongoDB
 
 This microservice has no dependencies on other microservices.
 
@@ -18,7 +18,7 @@ This microservice has no dependencies on other microservices.
 * [Configuration Guide](doc/Configuration.md)
 * [Deployment Guide](doc/Deployment.md)
 * Client SDKs
-  - [Node.js SDK](https://github.com/pip-services/pip-clients-syslog-node)
+  - [Node.js SDK](https://github.com/pip-services/pip-clients-eventlog-node)
 * Communication Protocols
   - [HTTP/REST Version 1](doc/RestProtocolV1.md)
   - [Seneca Version 1](doc/SenecaProtocolV1.md)
@@ -27,7 +27,7 @@ This microservice has no dependencies on other microservices.
 
 Right now the only way to get the microservice is to check it out directly from github repository
 ```bash
-git clone git@github.com:pip-services/pip-services-syslog.git
+git clone git@github.com:pip-services-infrastructure/pip-services-eventlog.git
 ```
 
 Pip.Service team is working to implement packaging and make stable releases available for your 
@@ -39,64 +39,24 @@ Add **config.json** file to the root of the microservice folder and set configur
 As the starting point you can use example configuration from **config.example.json** file. 
 
 Example of microservice configuration
-```javascript
-{    
-    "logs": {
-        "descriptor": { 
-            "type": "console"
-        },
-        "options": { 
-            "level": 5
-        }
-    },    
-    "counters": {
-        "descriptor": { 
-            "type": "log"
-        },
-        "options": { 
-            "timeout": 10000
-        }
-    },
-    "persistence": {
-        "descriptor": {
-            "group": "pip-services-syslog",
-            "type": "file"
-        },
-        "options": {
-            "path": "data/syslog.json"
-        }
-    },    
-    "controllers": {
-        "descriptor": {
-            "group": "pip-services-syslog"
-        }
-    },    
-    "client": [],    
-    "service": [
-        {
-            "descriptor": {
-                "group": "pip-services-syslog",
-                "type": "seneca"
-            },
-            "endpoint": {
-                "protocol": "tcp",
-                "host": "localhost",
-                "port": 8803
-            }
-        },
-        {
-            "descriptor": {
-                "group": "pip-services-syslog",
-                "type": "rest"
-            },
-            "endpoint": {
-                "protocol": "http",
-                "host": "localhost",
-                "port": 8003
-            }
-        }
-    ]   
-}
+```yaml
+- descriptor: "pip-services-container:container-info:default:default:1.0"
+  name: "pip-services-eventlog"
+  description: "EventLog microservice"
+
+- descriptor: "pip-services-commons:logger:console:default:1.0"
+  level: "trace"
+
+- descriptor: "pip-services-eventlog:persistence:file:default:1.0"
+  path: "./data/eventlog.json"
+
+- descriptor: "pip-services-eventlog:controller:default:default:1.0"
+
+- descriptor: "pip-services-eventlog:service:rest:default:1.0"
+  connection:
+    protocol: "http"
+    host: "0.0.0.0"
+    port: 3000
 ```
  
 For more information on the microservice configuration see [Configuration Guide](Configuration.md).
@@ -112,27 +72,23 @@ The easiest way to work with the microservice is to use client SDK.
 The complete list of available client SDKs for different languages is listed in the [Quick Links](#links)
 
 If you use Node.js then you should add dependency to the client SDK into **package.json** file of your project
-```javascript
-{
+```yaml
+- descriptor: "pip-services-eventlog:client:rest:default:1.0"
+  connection:
+    protocol: "http"
     ...
-    "dependencies": {
-        ....
-        "pip-clients-syslog-node": "^1.0.*",
-        ...
-    }
-}
 ```
 
 Inside your code get the reference to the client SDK
 ```javascript
-var sdk = new require('pip-clients-syslog-node').Version1;
+var sdk = new require('pip-clients-eventlog-node');
 ```
 
 Define client configuration parameters that match configuration of the microservice external API
 ```javascript
 // Client configuration
 var config = {
-    endpoint: {
+    connection: {
         protocol: 'http',
         host: 'localhost', 
         port: 8003
@@ -143,10 +99,10 @@ var config = {
 Instantiate the client and open connection to the microservice
 ```javascript
 // Create the client instance
-var client = sdk.SysLogRestClient(config);
+var client = sdk.EventLogRestClientV1(config);
 
 // Connect to the microservice
-client.open(function(err) {
+client.open(null, function(err) {
     if (err) {
         console.error('Connection to the microservice failed');
         console.error(err);
@@ -161,14 +117,14 @@ client.open(function(err) {
 Now the client is ready to perform operations
 ```javascript
 // Log system activity
-client.logSystemActivity(
+client.write(
     null,
     {
         type: 'restart',
-        server: 'server1',
-        time: new Date()
+        source: 'server1',
+        message: 'Restarted server'
     },
-    function (err, activity) {
+    function (err, event) {
         ...
     }
 );
@@ -178,19 +134,19 @@ client.logSystemActivity(
 var now = new Date();
 
 // Get the list system activities
-client.getSystemActivities(
+client.read(
     null,
     {
-        start: new Date(now.getTime() - 24 * 3600 * 1000),
-        end: now,
-        server: 'server1'
+        from: new Date(now.getTime() - 24 * 3600 * 1000),
+        to: now,
+        source: 'server1'
     },
     {
         total: true,
         skip: 0, 
         take: 10  
     },
-    function(err, activities) {
+    function(err, page) {
     ...    
     }
 );

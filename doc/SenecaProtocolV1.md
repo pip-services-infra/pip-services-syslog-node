@@ -1,15 +1,17 @@
-# Seneca Protocol (version 1) <br/> SysLog Microservice
+# Seneca Protocol (version 1) <br/> Event Log Microservice
 
-SysLog microservice implements a Seneca compatible API. 
+Event Log microservice implements a Seneca compatible API. 
 Seneca port and protocol can be specified in the microservice [configuration](Configuration.md/#api_seneca). 
 
 ```javascript
 var seneca = require('seneca')();
 
 seneca.client({
-    type: 'tcp', // Microservice seneca protocol
-    localhost: 'localhost', // Microservice localhost
-    port: 8803, // Microservice seneca port
+    connection: {
+        type: 'tcp', // Microservice seneca protocol
+        localhost: 'localhost', // Microservice localhost
+        port: 8803, // Microservice seneca port
+    }
 });
 ```
 
@@ -18,7 +20,7 @@ The microservice responds on the following requests:
 ```javascript
 seneca.act(
     {
-        role: 'syslog',
+        role: 'eventlog',
         version: 1,
         cmd: ...cmd name....
         ... Arguments ...
@@ -29,61 +31,65 @@ seneca.act(
 );
 ```
 
-* [SystemActivity class](#class1)
-* [SystemActivityPage class](#class2)
-* [cmd: 'get_system_activities'](#operation1)
-* [cmd: 'log_system_activity'](#operation2)
+* [SystemEventV1 class](#class1)
+* [DataPage<SystemEventV1> class](#class2)
+* [cmd: 'read'](#operation1)
+* [cmd: 'write'](#operation2)
 
 ## Data types
 
-### <a name="class1"></a> SystemActivity class
+### <a name="class1"></a> SystemEventV1 class
 
 Represents a record of a system activity performed in the past
 
 **Properties:**
 - id: string - unique record id
-- time: Date - date and time when activity took place (default: current time)
-- server: string - server name where activity took place (default: current host)
-- type: string - activity type: 'restart', 'upgrade', 'shutdown', etc.
+- correlation_id: string - unique id of transaction that caused the event
+- time: Date - date and time in UTC when the event took place (default: current time)
+- source: string - server name where event took place (default: current host)
+- type: string - event type: 'restart', 'upgrade', 'shutdown', 'transaction' etc.
 - severity: number - severity level (impact on system operations) from 0: Low to 1000: High
+- message: string - descriptive message
 - details: Object - additional details that can help system administrators in troubleshooting
 
-### <a name="class2"></a> SystemActivityPage class
+### <a name="class2"></a> DataPage<SystemEventV1> class
 
-Represents a paged result with subset of requested SystemActivity objects
+Represents a paged result with subset of requested SystemEventV1 objects
 
 **Properties:**
-- data: [SystemActivity] - array of retrieved SystemActivity page
+- data: [SystemEventV1] - array of retrieved SystemEventV1 page
 - count: int - total number of objects in retrieved resultset
 
 ## Operations
 
-### <a name="operation1"></a> Cmd: 'get_system_activities'
+### <a name="operation1"></a> Cmd: 'read'
 
-Retrieves a list of system activities by specified criteria
+Retrieves a list of system events by specified criteria
 
 **Arguments:** 
 - filter: object - filter parameters
-  - type: string - (optional) type activities
-  - server: string - (optional) server where activities occured
-  - severity: number - (optional) severity of activities
-  - start: Date - (optional) start of the time range
-  - end: Date - (optional) end of the time range
+  - search: string - (optional) search substring to find in source, type or message
+  - type: string - (optional) type events
+  - source: string - (optional) server where events occured
+  - severity: number - (optional) severity of events
+  - from: Date - (optional) start of the time range
+  - to: Date - (optional) end of the time range
 - paging: object - paging parameters
-  - skip: int - (optional) start of page (default: 0). Operation returns paged result
-  - take: int - (optional) page length (max: 100). Operation returns paged result
+  - skip: int - (optional) start of page (default: 0)
+  - take: int - (optional) page length (default: 100)
+  - total: boolean - (optional) include total counter into paged result (default: false)
 
 **Returns:**
 - err: Error - occured error or null for success
-- result: [SystemActivity] or SystemActivityPage - retrieved SystemActivity objects in plain array or page format
+- result: [SystemEventV1] or SystemEventV1Page - retrieved SystemEventV1 objects in plain array or page format
 
 ### <a name="operation2"></a> Cmd: 'log_system_activity'
 
 Log system activity
 
 **Arguments:** 
-- activity: SystemActivity - system activity to be logged
+- activity: SystemEventV1 - system activity to be logged
 
 **Returns:**
 - err: Error - occured error or null for success
-- result: SystemActivity - logged system activity
+- result: SystemEventV1 - logged system activity

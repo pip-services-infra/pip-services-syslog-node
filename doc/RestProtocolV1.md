@@ -1,59 +1,65 @@
-# HTTP REST Protocol (version 1) <br/> SysLog Microservice
+# HTTP REST Protocol (version 1) <br/> Event Log Microservice
 
-SysLog microservice implements a REST compatible API, that can be accessed on configured port.
+EventLog microservice implements a REST compatible API, that can be accessed on configured port.
 All input and output data is serialized in JSON format. Errors are returned in [standard format]().
 
-* [SystemActivity class](#class1)
-* [SystemActivityPage class](#class2)
-* [GET /syslog](#operation1)
-* [POST /syslog](#operation2)
+* [SystemEventV1 class](#class1)
+* [DataPage<SystemEventV1> class](#class2)
+* [POST /eventlog/read](#operation1)
+* [POST /eventlog/write](#operation2)
 
 ## Data types
 
-### <a name="class1"></a> SystemActivity class
+### <a name="class1"></a> SystemEventV1 class
 
-Represents a record of a system activity performed in the past
+Represents a record of a system event performed in the past
 
 **Properties:**
 - id: string - unique record id
-- time: Date - date and time when activity took place (default: current time)
-- server: string - server name where activity took place (default: current host)
-- type: string - activity type: 'restart', 'upgrade', 'shutdown', etc.
+- correlation_id: string - unique id of transaction that caused the event
+- time: Date - date and time in UTC when the event took place (default: current time)
+- source: string - server name where event took place (default: current host)
+- type: string - event type: 'restart', 'upgrade', 'shutdown', 'transaction' etc.
 - severity: number - severity level (impact on system operations) from 0: Low to 1000: High
+- message: string - descriptive message
 - details: Object - additional details that can help system administrators in troubleshooting
 
-### <a name="class2"></a> SystemActivityPage class
+### <a name="class2"></a> DataPage<SystemEventV1> class
 
-Represents a paged result with subset of requested SystemActivity objects
+Represents a paged result with subset of requested SystemEventV1 objects
 
 **Properties:**
-- data: [SystemActivity] - array of retrieved SystemActivity page
+- data: [SystemEventV1] - array of retrieved SystemEventV1 page
 - count: int - total number of objects in retrieved resultset
 
 ## Operations
 
-### <a name="operation1"></a> Method: 'GET', route '/syslog'
+### <a name="operation1"></a> Method: 'POST', route '/eventlog/read'
 
-Retrieves a list of system activities by specified criteria
-
-**Parameters:** 
-- type: string - (optional) type activities
-- server: string - (optional) server where activities occured
-- severity: number - (optional) severity of activities
-- start: Date - (optional) start of the time range
-- end: Date - (optional) end of the time range
-- skip: int - (optional) start of page (default: 0). Operation returns paged result
-- take: int - (optional) page length (max: 100). Operation returns paged result
-
-**Response body:**
-Array of SystemActivity objects or SystemActivityPage object if paging was requested or error
-
-### <a name="operation2"></a> Method: 'POST', route '/syslog'
-
-Log system activity
+Retrieves a list of system events by specified criteria
 
 **Request body:**
-SystemActivity object to be logged
+- filter: object - filter parameters
+  - search: string - (optional) search substring to find in source, type or message
+  - type: string - (optional) type events
+  - source: string - (optional) server where events occured
+  - severity: number - (optional) severity of events
+  - from: Date - (optional) start of the time range
+  - to: Date - (optional) end of the time range
+- paging: object - paging parameters
+  - skip: int - (optional) start of page (default: 0)
+  - take: int - (optional) page length (default: 100)
+  - total: boolean - (optional) include total counter into paged result (default: false)
 
 **Response body:**
-Logged SystemActivity object or error
+Array of SystemEventV1 objects or SystemEventV1Page object if paging was requested or error
+
+### <a name="operation2"></a> Method: 'POST', route '/eventlog/write'
+
+Log system event
+
+**Request body:**
+- event: SystemEventV1 - the object to be logged
+
+**Response body:**
+Logged SystemEventV1 object or error

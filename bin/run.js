@@ -1,15 +1,7 @@
-/**
- * @file System log process launcher
- * @copyright Digital Living Software Corp. 2014-2016
- */
+let EventLogProcess = require('../obj/src/container/EventLogProcess').EventLogProcess;
 
-/* global */
-
-'use strict';
-
-var _ = require('lodash');
-var SystemLogProcessRunner = require('../lib/src/run/SystemLogProcessRunner').SystemLogProcessRunner;
-
-var runner = new SystemLogProcessRunner();
-
-runner.startWithDefaultConfig('../config/config.json');
+try {
+    new EventLogProcess().runWithArguments(process.argv);
+} catch (ex) {
+    console.error(ex);
+}

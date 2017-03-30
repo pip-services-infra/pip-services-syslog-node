@@ -1,16 +1,19 @@
 {
     "compilerOptions": {
-		"declaration": false,
+		"declaration": true,
         "module": "commonjs",
-        "target": "es5",
+        "target": "es6",
         "noImplicitAny": false,
-        "outDir": "lib",
+        "outDir": "obj",
         "rootDir": ".",
-        "sourceMap": false
+        "sourceMap": true,
+	"types": ["node", "mocha", "chai"] 
     },
     "exclude": [
         "node_modules",
         "lib",
-        "dist"
+        "dist",
+        "obj",
+        "temp"
     ]
 }
