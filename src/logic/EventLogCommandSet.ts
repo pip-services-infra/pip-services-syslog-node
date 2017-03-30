@@ -18,11 +18,11 @@ export class EventLogCommandSet extends CommandSet {
 		this._logic = logic;
 
 		// Register commands to the database
-		this.addCommand(this.makeReadCommand());
-		this.addCommand(this.makeWriteCommand());
+		this.addCommand(this.makeGetEventsCommand());
+		this.addCommand(this.makeLogEventCommand());
 	}
 
-	private makeReadCommand(): ICommand {
+	private makeGetEventsCommand(): ICommand {
 		return new Command(
 			"get_events",
 			null,
@@ -34,7 +34,7 @@ export class EventLogCommandSet extends CommandSet {
 		);
 	}
 
-	private makeWriteCommand(): ICommand {
+	private makeLogEventCommand(): ICommand {
 		return new Command(
 			"log_event",
 			null,

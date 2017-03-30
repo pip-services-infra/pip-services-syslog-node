@@ -36,7 +36,7 @@ class EventLogSenecaPlugin extends pip_services_net_node_1.SenecaPlugin {
         let service = new EventLogSenecaServiceV1_1.EventLogSenecaServiceV1();
         let serviceOptions = options.service || {};
         service.configure(pip_services_commons_node_3.ConfigParams.fromValue(serviceOptions));
-        return pip_services_commons_node_1.References.fromTuples(new pip_services_commons_node_2.Descriptor('pip-services-commons', 'logger', 'console', 'default', '1.0'), logger, new pip_services_commons_node_2.Descriptor('pip-services-eventlog', 'persistence', persistenceType, 'default', '1.0'), persistence, new pip_services_commons_node_2.Descriptor('pip-services-eventlog', 'controller', 'default', 'default', '1.0'), controller, new pip_services_commons_node_2.Descriptor('pip-services-eventlog', 'service', 'rest', 'default', '1.0'), service);
+        return pip_services_commons_node_1.References.fromTuples(new pip_services_commons_node_2.Descriptor('pip-services-commons', 'logger', 'console', 'default', '1.0'), logger, new pip_services_commons_node_2.Descriptor('pip-services-eventlog', 'persistence', persistenceType, 'default', '1.0'), persistence, new pip_services_commons_node_2.Descriptor('pip-services-eventlog', 'controller', 'default', 'default', '1.0'), controller, new pip_services_commons_node_2.Descriptor('pip-services-eventlog', 'service', 'seneca', 'default', '1.0'), service);
     }
 }
 exports.EventLogSenecaPlugin = EventLogSenecaPlugin;
