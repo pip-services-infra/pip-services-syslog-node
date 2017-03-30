@@ -24,23 +24,23 @@ export class EventLogCommandSet extends CommandSet {
 
 	private makeReadCommand(): ICommand {
 		return new Command(
-			"read",
+			"get_events_page_by_filter",
 			null,
 			(correlationId: string, args: Parameters, callback: (err: any, result: any) => void) => {
 				let filter = FilterParams.fromValue(args.get("filter"));
 				let paging = PagingParams.fromValue(args.get("paging"));
-				this._logic.read(correlationId, filter, paging, callback);
+				this._logic.get_events_page_by_filter(correlationId, filter, paging, callback);
 			}
 		);
 	}
 
 	private makeWriteCommand(): ICommand {
 		return new Command(
-			"write",
+			"log_event",
 			null,
 			(correlationId: string, args: Parameters, callback: (err: any, result: any) => void) => {
 				let event: SystemEventV1 = args.get("event");
-				this._logic.write(correlationId, event, callback);
+				this._logic.log_event(correlationId, event, callback);
 			}
 		);
 	}

@@ -33,8 +33,8 @@ seneca.act(
 
 * [SystemEventV1 class](#class1)
 * [DataPage<SystemEventV1> class](#class2)
-* [cmd: 'read'](#operation1)
-* [cmd: 'write'](#operation2)
+* [cmd: 'get_events_page_by_filter'](#operation1)
+* [cmd: 'log_event'](#operation2)
 
 ## Data types
 
@@ -62,7 +62,7 @@ Represents a paged result with subset of requested SystemEventV1 objects
 
 ## Operations
 
-### <a name="operation1"></a> Cmd: 'read'
+### <a name="operation1"></a> Cmd: 'get_events_page_by_filter'
 
 Retrieves a list of system events by specified criteria
 
@@ -83,12 +83,12 @@ Retrieves a list of system events by specified criteria
 - err: Error - occured error or null for success
 - result: [SystemEventV1] or SystemEventV1Page - retrieved SystemEventV1 objects in plain array or page format
 
-### <a name="operation2"></a> Cmd: 'log_system_activity'
+### <a name="operation2"></a> Cmd: 'log_event'
 
-Log system activity
+Log system event
 
 **Arguments:** 
-- activity: SystemEventV1 - system activity to be logged
+- event: SystemEventV1 - system activity to be logged
 
 **Returns:**
 - err: Error - occured error or null for success

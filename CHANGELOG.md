@@ -1,5 +1,4 @@
-<a name="1.0.0"></a>
-### 0.0.1 (2017-03-26)
+<a name="1.0.0"></a> ### 1.0.0 (2017-03-26)
 
 #### Features
 * **mongodb** MongoDB data access using Mongoose framework

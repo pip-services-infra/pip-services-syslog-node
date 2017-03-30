@@ -38,7 +38,7 @@ suite('EventLogSenecaPlugin', ()=> {
         seneca.act(
             {
                 role: 'eventlog',
-                cmd: 'read' 
+                cmd: 'get_events_page_by_filter' 
             },
             (err, page) => {
                 assert.isNull(err);

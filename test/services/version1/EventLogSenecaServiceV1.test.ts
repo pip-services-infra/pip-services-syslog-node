@@ -82,7 +82,7 @@ suite('EventLogSenecaServiceV1', ()=> {
                 seneca.act(
                     {
                         role: 'eventlog',
-                        cmd: 'write',
+                        cmd: 'log_event',
                         event: EVENT1
                     },
                     (err, event) => {
@@ -105,7 +105,7 @@ suite('EventLogSenecaServiceV1', ()=> {
                 seneca.act(
                     {
                         role: 'eventlog',
-                        cmd: 'write',
+                        cmd: 'log_event',
                         event: EVENT2
                     },
                     (err, event) => {
@@ -128,7 +128,7 @@ suite('EventLogSenecaServiceV1', ()=> {
                 seneca.act(
                     {
                         role: 'eventlog',
-                        cmd: 'read' 
+                        cmd: 'get_events_page_by_filter' 
                     },
                     (err, page) => {
                         assert.isNull(err);

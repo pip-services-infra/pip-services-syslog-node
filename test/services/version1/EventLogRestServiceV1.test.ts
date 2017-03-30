@@ -74,7 +74,7 @@ suite('EventLogRestServiceV1', ()=> {
         async.series([
         // Create one activity
             (callback) => {
-                rest.post('/eventlog/write',
+                rest.post('/eventlog/log_event',
                     {
                         event: EVENT1
                     },
@@ -94,7 +94,7 @@ suite('EventLogRestServiceV1', ()=> {
             },
         // Create another activity
             (callback) => {
-                rest.post('/eventlog/write',
+                rest.post('/eventlog/log_event',
                     {
                         event: EVENT2
                     },
@@ -114,7 +114,7 @@ suite('EventLogRestServiceV1', ()=> {
             },
         // Get all activities
             (callback) => {
-                rest.post('/eventlog/read',
+                rest.post('/eventlog/get_events_page_by_filter',
                     {},
                     (err, req, res, page) => {
                         assert.isNull(err);
