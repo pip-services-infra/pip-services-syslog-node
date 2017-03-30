@@ -1,6 +1,6 @@
-# Deployment Guide <br/> eventlog Microservice
+# Deployment Guide <br/> EventLog Microservice
 
-eventlog microservice can be used in different deployment scenarios.
+EventLog microservice can be used in different deployment scenarios.
 
 * [Standalone Process](#process)
 * [Seneca Plugin](#seneca)
@@ -34,7 +34,7 @@ To learn more about Seneca microservices framework to go http://senecajs.org
     ...
     "dependencies": {
         ....
-        "pip-services-eventlog": "git+ssh://git@github.com:pip-services-infrastructure/pip-services-eventlog.git",
+        "pip-services-eventlog": "^1.0.0",
         ...
     }
 }

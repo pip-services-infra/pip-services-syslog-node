@@ -1,11 +1,11 @@
-# Configuration Guide <br/> Event Log Microservice
+# Configuration Guide <br/> EventLog Microservice
 
-Event Log microservice configuration structure follows the 
+EventLog microservice configuration structure follows the 
 [standard configuration](https://github.com/pip-services/pip-services-container-node/doc/Configuration.md) 
 structure. 
 
 * [persistence](#persistence)
-  - [persistence](#persistence_memory)
+  - [memory](#persistence_memory)
   - [file](#persistence_file)
   - [mongodb](#persistence_mongodb)
 * [controller](#controller)

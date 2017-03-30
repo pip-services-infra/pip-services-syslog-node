@@ -1,4 +1,4 @@
-# Development and Testing Guide <br/> Event Log Microservice
+# Development and Testing Guide <br/> EventLog Microservice
 
 This document provides high-level instructions on how to build and test the microservice.
 

@@ -1,4 +1,4 @@
-# Event Log Microservice
+# EventLog Microservice
 
 This is a system event logging microservice from Pip.Services library. 
 It logs important system events like starts and stops of servers,
@@ -36,7 +36,7 @@ as zip downloadable archieves.
 ## Run
 
 Add **config.json** file to the root of the microservice folder and set configuration parameters.
-As the starting point you can use example configuration from **config.example.json** file. 
+As the starting point you can use example configuration from **config.example.yaml** file. 
 
 Example of microservice configuration
 ```yaml
@@ -116,8 +116,8 @@ client.open(null, function(err) {
 
 Now the client is ready to perform operations
 ```javascript
-// Log system activity
-client.write(
+// Log system event
+client.logEvent(
     null,
     {
         type: 'restart',
@@ -133,8 +133,8 @@ client.write(
 ```javascript
 var now = new Date();
 
-// Get the list system activities
-client.read(
+// Get the list system events
+client.getEvents(
     null,
     {
         from_time: new Date(now.getTime() - 24 * 3600 * 1000),
