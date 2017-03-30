@@ -19,10 +19,10 @@ class EventLogController {
             this._commandSet = new EventLogCommandSet_1.EventLogCommandSet(this);
         return this._commandSet;
     }
-    get_events_page_by_filter(correlationId, filter, paging, callback) {
+    getEventsPageByFilter(correlationId, filter, paging, callback) {
         this._persistence.getPageByFilter(correlationId, filter, paging, callback);
     }
-    log_event(correlationId, event, callback) {
+    logEvent(correlationId, event, callback) {
         this._persistence.create(correlationId, event, callback);
     }
 }

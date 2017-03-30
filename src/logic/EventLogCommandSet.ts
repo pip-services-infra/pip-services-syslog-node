@@ -29,7 +29,7 @@ export class EventLogCommandSet extends CommandSet {
 			(correlationId: string, args: Parameters, callback: (err: any, result: any) => void) => {
 				let filter = FilterParams.fromValue(args.get("filter"));
 				let paging = PagingParams.fromValue(args.get("paging"));
-				this._logic.get_events_page_by_filter(correlationId, filter, paging, callback);
+				this._logic.getEventsPageByFilter(correlationId, filter, paging, callback);
 			}
 		);
 	}
@@ -40,7 +40,7 @@ export class EventLogCommandSet extends CommandSet {
 			null,
 			(correlationId: string, args: Parameters, callback: (err: any, result: any) => void) => {
 				let event: SystemEventV1 = args.get("event");
-				this._logic.log_event(correlationId, event, callback);
+				this._logic.logEvent(correlationId, event, callback);
 			}
 		);
 	}
