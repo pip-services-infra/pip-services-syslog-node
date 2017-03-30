@@ -4,4 +4,4 @@ export * from './logic';
 export * from './services/version1';
 export * from './build';
 
-module.exports = require('./container/EventLogSenecaPlugin');
+//module.exports = require('./container/EventLogSenecaPlugin');
