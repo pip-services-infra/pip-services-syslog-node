@@ -72,8 +72,8 @@ Retrieves a list of system events by specified criteria
   - type: string - (optional) type events
   - source: string - (optional) server where events occured
   - severity: number - (optional) severity of events
-  - from: Date - (optional) start of the time range
-  - to: Date - (optional) end of the time range
+  - from_time: Date - (optional) start of the time range
+  - to_time: Date - (optional) end of the time range
 - paging: object - paging parameters
   - skip: int - (optional) start of page (default: 0)
   - take: int - (optional) page length (default: 100)

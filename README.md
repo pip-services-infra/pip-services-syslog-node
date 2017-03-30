@@ -137,8 +137,8 @@ var now = new Date();
 client.read(
     null,
     {
-        from: new Date(now.getTime() - 24 * 3600 * 1000),
-        to: now,
+        from_time: new Date(now.getTime() - 24 * 3600 * 1000),
+        to_time: now,
         source: 'server1'
     },
     {
