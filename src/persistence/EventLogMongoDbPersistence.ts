@@ -26,9 +26,11 @@ export class EventLogMongoDbPersistence
         let search = filter.getAsNullableString('search');
         if (search != null) {
             let searchRegex = new RegExp(search, "i");
-            criteria.push({ source: { $regex: searchRegex } });
-            criteria.push({ type: { $regex: searchRegex } });
-            criteria.push({ message: { $regex: searchRegex } });
+            let searchCriteria = [];
+            searchCriteria.push({ source: { $regex: searchRegex } });
+            searchCriteria.push({ type: { $regex: searchRegex } });
+            searchCriteria.push({ message: { $regex: searchRegex } });
+            criteria.push({ $or: searchCriteria });
         }
 
         let id = filter.getAsNullableString('id');
@@ -59,7 +61,7 @@ export class EventLogMongoDbPersistence
         if (toTime != null)
             criteria.push({ time: { $lt: toTime } });
 
-        return { $and: criteria };
+        return criteria.length > 0 ? { $and: criteria } : {};
     }
 
     public getPageByFilter(correlationId: string, filter: FilterParams, paging: PagingParams, callback: any) {

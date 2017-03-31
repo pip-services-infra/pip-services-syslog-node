@@ -15,9 +15,11 @@ class EventLogMongoDbPersistence extends pip_services_data_node_1.IdentifiableMo
         let search = filter.getAsNullableString('search');
         if (search != null) {
             let searchRegex = new RegExp(search, "i");
-            criteria.push({ source: { $regex: searchRegex } });
-            criteria.push({ type: { $regex: searchRegex } });
-            criteria.push({ message: { $regex: searchRegex } });
+            let searchCriteria = [];
+            searchCriteria.push({ source: { $regex: searchRegex } });
+            searchCriteria.push({ type: { $regex: searchRegex } });
+            searchCriteria.push({ message: { $regex: searchRegex } });
+            criteria.push({ $or: searchCriteria });
         }
         let id = filter.getAsNullableString('id');
         if (id != null)
@@ -40,7 +42,7 @@ class EventLogMongoDbPersistence extends pip_services_data_node_1.IdentifiableMo
         let toTime = filter.getAsNullableDateTime('to_time');
         if (toTime != null)
             criteria.push({ time: { $lt: toTime } });
-        return { $and: criteria };
+        return criteria.length > 0 ? { $and: criteria } : {};
     }
     getPageByFilter(correlationId, filter, paging, callback) {
         super.getPageByFilter(correlationId, this.composeFilter(filter), paging, '-time', null, callback);
