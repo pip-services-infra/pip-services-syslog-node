@@ -2,10 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class EventLogTypeV1 {
 }
-EventLogTypeV1.Restart = "Restart";
-EventLogTypeV1.Failure = "Failure";
-EventLogTypeV1.Warning = "Warning";
-EventLogTypeV1.Transaction = "Transaction";
-EventLogTypeV1.Other = "Other";
+EventLogTypeV1.Restart = "restart";
+EventLogTypeV1.Failure = "failure";
+EventLogTypeV1.Warning = "warning";
+EventLogTypeV1.Transaction = "transaction";
+EventLogTypeV1.Other = "other";
 exports.EventLogTypeV1 = EventLogTypeV1;
 //# sourceMappingURL=EventLogTypeV1.js.map
