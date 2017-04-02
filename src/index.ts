@@ -3,5 +3,6 @@ export * from './persistence';
 export * from './logic';
 export * from './services/version1';
 export * from './build';
+export * from './container';
 
 //module.exports = require('./container/EventLogSenecaPlugin');
