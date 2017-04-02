@@ -12,9 +12,9 @@ import { EventLogTypeV1 } from '../../../src/data/version1/EventLogTypeV1';
 import { EventLogSeverityV1 } from '../../../src/data/version1/EventLogSeverityV1';
 import { EventLogMemoryPersistence } from '../../../src/persistence/EventLogMemoryPersistence';
 import { EventLogController } from '../../../src/logic/EventLogController';
-import { EventLogRestServiceV1 } from '../../../src/services/version1/EventLogRestServiceV1';
+import { EventLogHttpServiceV1 } from '../../../src/services/version1/EventLogHttpServiceV1';
 
-let restConfig = ConfigParams.fromTuples(
+let httpConfig = ConfigParams.fromTuples(
     "connection.protocol", "http",
     "connection.host", "localhost",
     "connection.port", 3000
@@ -36,7 +36,7 @@ let EVENT2: SystemEventV1 = new SystemEventV1(
 );
 
 suite('EventLogRestServiceV1', ()=> {
-    let service: EventLogRestServiceV1;
+    let service: EventLogHttpServiceV1;
 
     let rest: any;
 
@@ -44,13 +44,13 @@ suite('EventLogRestServiceV1', ()=> {
         let persistence = new EventLogMemoryPersistence();
         let controller = new EventLogController();
 
-        service = new EventLogRestServiceV1();
-        service.configure(restConfig);
+        service = new EventLogHttpServiceV1();
+        service.configure(httpConfig);
 
         let references: References = References.fromTuples(
             new Descriptor('pip-services-eventlog', 'persistence', 'memory', 'default', '1.0'), persistence,
             new Descriptor('pip-services-eventlog', 'controller', 'default', 'default', '1.0'), controller,
-            new Descriptor('pip-services-eventlog', 'service', 'rest', 'default', '1.0'), service
+            new Descriptor('pip-services-eventlog', 'service', 'http', 'default', '1.0'), service
         );
         controller.setReferences(references);
         service.setReferences(references);

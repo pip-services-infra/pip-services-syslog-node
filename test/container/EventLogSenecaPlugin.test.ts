@@ -3,15 +3,15 @@ let assert = require('chai').assert;
 
 let pluginOptions = {
     'pip-services-eventlog': {
-        logs: {
+        logger: {
             level: 'debug'
         },
         persistence: {
             type: 'memory'
         },
-        services: {
+        service: {
             connection: {
-                type: 'none'
+                protocol: 'none'
             }
         }
     }
@@ -21,11 +21,11 @@ suite('EventLogSenecaPlugin', ()=> {
     let seneca;
 
     suiteSetup((done) => {
-        seneca = require('seneca')();
+        seneca = require('seneca')({ strict: { result: false } });
 
         // Load Seneca plugin
         let plugin = require('../../src/container/EventLogSenecaPlugin');
-        seneca.use(plugin);
+        seneca.use(plugin, pluginOptions);
 
         seneca.ready(done);
     });
@@ -34,7 +34,7 @@ suite('EventLogSenecaPlugin', ()=> {
         seneca.close(done);
     });
 
-    test.skip('Ping', (done) => {
+    test('Ping', (done) => {
         seneca.act(
             {
                 role: 'eventlog',

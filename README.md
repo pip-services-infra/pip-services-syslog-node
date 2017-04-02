@@ -20,14 +20,14 @@ This microservice has no dependencies on other microservices.
 * Client SDKs
   - [Node.js SDK](https://github.com/pip-services/pip-clients-eventlog-node)
 * Communication Protocols
-  - [HTTP/REST Version 1](doc/RestProtocolV1.md)
+  - [HTTP Version 1](doc/HttpProtocolV1.md)
   - [Seneca Version 1](doc/SenecaProtocolV1.md)
 
 ## Download
 
 Right now the only way to get the microservice is to check it out directly from github repository
 ```bash
-git clone git@github.com:pip-services-infrastructure/pip-services-eventlog.git
+git clone git@github.com:pip-services-infrastructure/pip-services-eventlog-node.git
 ```
 
 Pip.Service team is working to implement packaging and make stable releases available for your 
@@ -52,7 +52,7 @@ Example of microservice configuration
 
 - descriptor: "pip-services-eventlog:controller:default:default:1.0"
 
-- descriptor: "pip-services-eventlog:service:rest:default:1.0"
+- descriptor: "pip-services-eventlog:service:http:default:1.0"
   connection:
     protocol: "http"
     host: "0.0.0.0"
@@ -72,11 +72,15 @@ The easiest way to work with the microservice is to use client SDK.
 The complete list of available client SDKs for different languages is listed in the [Quick Links](#links)
 
 If you use Node.js then you should add dependency to the client SDK into **package.json** file of your project
-```yaml
-- descriptor: "pip-services-eventlog:client:rest:default:1.0"
-  connection:
-    protocol: "http"
+```javascript
+{
     ...
+    dependencies: {
+        ...
+        "pip-clients-eventlog-node": "^1.0.*"
+        ...
+    }
+}
 ```
 
 Inside your code get the reference to the client SDK
@@ -99,7 +103,7 @@ var config = {
 Instantiate the client and open connection to the microservice
 ```javascript
 // Create the client instance
-var client = sdk.EventLogRestClientV1(config);
+var client = sdk.EventLogHttpClientV1(config);
 
 // Connect to the microservice
 client.open(null, function(err) {

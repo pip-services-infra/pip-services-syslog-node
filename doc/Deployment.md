@@ -34,7 +34,7 @@ To learn more about Seneca microservices framework to go http://senecajs.org
     ...
     "dependencies": {
         ....
-        "pip-services-eventlog": "^1.0.0",
+        "pip-services-eventlog-node": "^1.0.*",
         ...
     }
 }
@@ -59,17 +59,23 @@ See [Configuration Guide](Configuration.md) for details.
 var seneca = require('seneca')();
 
 var config = {
-    log: { level: 'debug' },
+    logger: { 
+        level: 'debug' 
+    },
     persistence: {
         type: 'file',
         path: 'eventlog.json'
     },
     service: {
-        type: 'none'
+        connection: {
+            protocol: 'none'
+        }
     }
 };
 
-seneca.use('pip-services-eventlog', config);
+var plugin = require('pip-services-eventlog-node').EventLogSenecaPlugin;
+
+seneca.use(plugin, config);
 ```
 
 You can use the microservice by calling seneca commands directly as described in [Seneca Protocol](SenecaProtocolV1.md)

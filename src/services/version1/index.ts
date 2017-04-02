@@ -1,2 +1,2 @@
-export { EventLogRestServiceV1 } from './EventLogRestServiceV1';
+export { EventLogHttpServiceV1 } from './EventLogHttpServiceV1';
 export { EventLogSenecaServiceV1 } from './EventLogSenecaServiceV1';

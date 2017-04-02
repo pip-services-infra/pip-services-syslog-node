@@ -10,7 +10,7 @@ structure.
   - [mongodb](#persistence_mongodb)
 * [controller](#controller)
 * [service](#service)
-  - [rest](#service_rest)
+  - [http](#service_http)
   - [seneca](#service_seneca)
 
 ## <a name="persistence"></a> Persistence
@@ -85,19 +85,19 @@ The **service** components (also called endpoints) expose external microservice 
 Each microservice can expose multiple APIs (HTTP/REST, Thrift or Seneca) and multiple versions of the same API type.
 At least one service is required for the microservice to run successfully.
 
-### <a name="service_rest"></a> Rest
+### <a name="service_http"></a> Http
 
 HTTP/REST service has the following configuration properties:
 - connection: object - HTTP transport configuration options
-  - type: string - HTTP protocol - 'http' or 'https' (default is 'http')
+  - protocol: string - HTTP protocol - 'http' or 'https' (default is 'http')
   - host: string - IP address/hostname binding (default is '0.0.0.0')
   - port: number - HTTP port number
 
-A detailed description of HTTP/REST protocol version 1 can be found [here](RestProtocolV1.md)
+A detailed description of HTTP protocol version 1 can be found [here](HttpProtocolV1.md)
 
 Example:
 ```yaml
-- descriptor: "pip-services-eventlog:service:rest:default:1.0"
+- descriptor: "pip-services-eventlog:service:http:default:1.0"
   connection:
     protocol: "http"
     host: "0.0.0.0"

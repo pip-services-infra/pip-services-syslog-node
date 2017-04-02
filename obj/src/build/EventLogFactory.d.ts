@@ -7,6 +7,6 @@ export declare class EventLogFactory extends Factory {
     static MongoDbPersistenceDescriptor: Descriptor;
     static ControllerDescriptor: Descriptor;
     static SenecaServiceDescriptor: Descriptor;
-    static RestServiceDescriptor: Descriptor;
+    static HttpServiceDescriptor: Descriptor;
     constructor();
 }

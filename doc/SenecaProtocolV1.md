@@ -8,7 +8,7 @@ var seneca = require('seneca')();
 
 seneca.client({
     connection: {
-        type: 'tcp', // Microservice seneca protocol
+        protocol: 'tcp', // Microservice seneca protocol
         localhost: 'localhost', // Microservice localhost
         port: 8803, // Microservice seneca port
     }

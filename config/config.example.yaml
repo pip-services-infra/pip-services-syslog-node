@@ -10,7 +10,7 @@
 
 - descriptor: "pip-services-eventlog:controller:default:default:1.0"
 
-- descriptor: "pip-services-eventlog:service:rest:default:1.0"
+- descriptor: "pip-services-eventlog:service:http:default:1.0"
   connection:
     protocol: "http"
     host: "0.0.0.0"
