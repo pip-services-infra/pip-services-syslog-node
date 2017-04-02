@@ -48,7 +48,7 @@ export class EventLogMemoryPersistence
         let fromTime = filter.getAsNullableDateTime('from_time');
         let toTime = filter.getAsNullableDateTime('to_time');
 
-        return function (item: SystemEventV1): boolean {
+        return (item: SystemEventV1) => {
             if (search != null && !this.matchSearch(item, search))
                 return false;
             if (id != null && id != item.id)
