@@ -53,7 +53,7 @@ suite('EventLogSenecaServiceV1', ()=> {
             new Descriptor('pip-services-net', 'seneca', 'instance', 'default', '1.0'), senecaAddon,
             new Descriptor('pip-services-eventlog', 'persistence', 'memory', 'default', '1.0'), persistence,
             new Descriptor('pip-services-eventlog', 'controller', 'default', 'default', '1.0'), controller,
-            new Descriptor('pip-services-eventlog', 'service', 'commandable-seneca', 'default', '1.0'), service
+            new Descriptor('pip-services-eventlog', 'service', 'seneca', 'default', '1.0'), service
         );
 
         controller.setReferences(references);
