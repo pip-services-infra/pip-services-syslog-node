@@ -35,7 +35,7 @@ let EVENT2: SystemEventV1 = new SystemEventV1(
     'test error'
 );
 
-suite('EventLogRestServiceV1', ()=> {
+suite('EventLogHttpServiceV1', ()=> {
     let service: EventLogHttpServiceV1;
 
     let rest: any;

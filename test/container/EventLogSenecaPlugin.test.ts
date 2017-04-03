@@ -2,17 +2,15 @@ let _ = require('lodash');
 let assert = require('chai').assert;
 
 let pluginOptions = {
-    'pip-services-eventlog': {
-        logger: {
-            level: 'debug'
-        },
-        persistence: {
-            type: 'memory'
-        },
-        service: {
-            connection: {
-                protocol: 'none'
-            }
+    logger: {
+        level: 'debug'
+    },
+    persistence: {
+        type: 'memory'
+    },
+    service: {
+        connection: {
+            protocol: 'none'
         }
     }
 };
