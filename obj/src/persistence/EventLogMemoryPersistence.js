@@ -36,7 +36,7 @@ class EventLogMemoryPersistence extends pip_services_data_node_1.IdentifiableMem
         let minSeverity = filter.getAsNullableInteger('min_severity');
         let fromTime = filter.getAsNullableDateTime('from_time');
         let toTime = filter.getAsNullableDateTime('to_time');
-        return function (item) {
+        return (item) => {
             if (search != null && !this.matchSearch(item, search))
                 return false;
             if (id != null && id != item.id)

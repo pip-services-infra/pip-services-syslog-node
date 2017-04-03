@@ -8,5 +8,6 @@ __export(require("./persistence"));
 __export(require("./logic"));
 __export(require("./services/version1"));
 __export(require("./build"));
+__export(require("./container"));
 //module.exports = require('./container/EventLogSenecaPlugin'); 
 //# sourceMappingURL=index.js.map

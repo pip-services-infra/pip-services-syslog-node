@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 let _ = require('lodash');
-let os = require('os');
 const pip_services_commons_node_1 = require("pip-services-commons-node");
 const pip_services_data_node_1 = require("pip-services-data-node");
 const SystemEventMongoDbSchema_1 = require("./SystemEventMongoDbSchema");

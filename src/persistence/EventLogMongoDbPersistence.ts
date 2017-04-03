@@ -1,5 +1,4 @@
 let _ = require('lodash');
-let os = require('os');
 
 import { FilterParams } from 'pip-services-commons-node';
 import { PagingParams } from 'pip-services-commons-node';
