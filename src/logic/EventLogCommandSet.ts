@@ -32,7 +32,7 @@ export class EventLogCommandSet extends CommandSet {
 		return new Command(
 			"get_events",
 			new ObjectSchema(true)
-				.withOptionalProperty('fitler', new FilterParamsSchema())
+				.withOptionalProperty('filter', new FilterParamsSchema())
 				.withOptionalProperty('paging', new PagingParamsSchema()),
 			(correlationId: string, args: Parameters, callback: (err: any, result: any) => void) => {
 				let filter = FilterParams.fromValue(args.get("filter"));
