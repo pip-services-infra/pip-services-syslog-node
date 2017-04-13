@@ -8,7 +8,7 @@ class SystemEventV1 {
     constructor(correlationId, source, type, severity, message, details) {
         this.id = pip_services_commons_node_1.IdGenerator.nextLong();
         this.time = new Date();
-        this.correlationId = correlationId;
+        this.correlation_id = correlationId;
         this.source = source;
         this.type = type || EventLogTypeV1_1.EventLogTypeV1.Other;
         this.severity = severity || EventLogSeverityV1_1.EventLogSeverityV1.Informational;

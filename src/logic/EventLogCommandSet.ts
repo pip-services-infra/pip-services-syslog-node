@@ -5,8 +5,14 @@ import { Schema } from 'pip-services-commons-node';
 import { Parameters } from 'pip-services-commons-node';
 import { FilterParams } from 'pip-services-commons-node';
 import { PagingParams } from 'pip-services-commons-node';
+import { ObjectSchema } from 'pip-services-commons-node';
+import { TypeCode } from 'pip-services-commons-node';
+import { FilterParamsSchema } from 'pip-services-commons-node';
+import { PagingParamsSchema } from 'pip-services-commons-node';
+import { DateTimeConverter } from 'pip-services-commons-node';
 
 import { SystemEventV1 } from '../data/version1/SystemEventV1';
+import { SystemEventV1Schema } from '../data/version1/SystemEventV1Schema';
 import { IEventLogBusinessLogic } from './IEventLogBusinessLogic';
 
 export class EventLogCommandSet extends CommandSet {
@@ -25,7 +31,9 @@ export class EventLogCommandSet extends CommandSet {
 	private makeGetEventsCommand(): ICommand {
 		return new Command(
 			"get_events",
-			null,
+			new ObjectSchema(true)
+				.withOptionalProperty('fitler', new FilterParamsSchema())
+				.withOptionalProperty('paging', new PagingParamsSchema()),
 			(correlationId: string, args: Parameters, callback: (err: any, result: any) => void) => {
 				let filter = FilterParams.fromValue(args.get("filter"));
 				let paging = PagingParams.fromValue(args.get("paging"));
@@ -37,9 +45,11 @@ export class EventLogCommandSet extends CommandSet {
 	private makeLogEventCommand(): ICommand {
 		return new Command(
 			"log_event",
-			null,
+			new ObjectSchema(true)
+				.withRequiredProperty('event', new SystemEventV1Schema()),
 			(correlationId: string, args: Parameters, callback: (err: any, result: any) => void) => {
 				let event: SystemEventV1 = args.get("event");
+				event.time = DateTimeConverter.toNullableDateTime(event.time);
 				this._logic.logEvent(correlationId, event, callback);
 			}
 		);

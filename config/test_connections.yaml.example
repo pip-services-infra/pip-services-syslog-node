@@ -3,3 +3,15 @@ mongodb:
         host: localhost
         port: 27017
         database: test
+
+lambda:
+    connection:
+        protocol: aws
+        arn: arn:aws:lambda:us-east-1:531917873182:function:pip-services-eventlog
+
+    credential:
+        access_id: ZZZZZZ5Z4DEVJYZ2PUXA
+        access_key: ZZZZZZWjEUNWVdpPqVGjHSfwTjer//pHqBfsKkMU
+
+    options:
+        connection_timeout: 30000

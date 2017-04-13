@@ -53,7 +53,7 @@ export class EventLogMemoryPersistence
                 return false;
             if (id != null && id != item.id)
                 return false;
-            if (correlationId != null && correlationId != item.correlationId)
+            if (correlationId != null && correlationId != item.correlation_id)
                 return false;
             if (source != null && source != item.source)
                 return false;

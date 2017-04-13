@@ -5,15 +5,9 @@ import { EventLogFactory } from '../build/EventLogFactory';
 
 export class EventLogProcess extends ProcessContainer {
 
-    protected initReferences(references: IReferences): void {
-        super.initReferences(references);
-
-        // Factory to statically resolve eventlog components
-        references.put(EventLogFactory.Descriptor, new EventLogFactory());
-    }
-
-    public runWithArguments(args: string[]): void {
-        return this.runWithArgumentsOrConfigFile("eventlog", args, "./config/config.yaml");
+    public constructor() {
+        super("eventlog", "System event logging microservice");
+        this._factories.add(new EventLogFactory);
     }
 
 }

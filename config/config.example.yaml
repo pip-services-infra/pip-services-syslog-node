@@ -1,7 +1,4 @@
-- descriptor: "pip-services-container:container-info:default:default:1.0"
-  name: "pip-services-eventlog"
-  description: "EventLog microservice"
-
+---
 - descriptor: "pip-services-commons:logger:console:default:1.0"
   level: "trace"
 

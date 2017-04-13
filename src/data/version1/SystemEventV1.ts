@@ -13,7 +13,7 @@ export class SystemEventV1 implements IStringIdentifiable {
 
         this.id = IdGenerator.nextLong();
         this.time = new Date();
-        this.correlationId = correlationId;
+        this.correlation_id = correlationId;
         this.source = source;
         this.type = type || EventLogTypeV1.Other;
         this.severity = severity || EventLogSeverityV1.Informational;
@@ -23,7 +23,7 @@ export class SystemEventV1 implements IStringIdentifiable {
 
     public id: string;
     public time: Date;
-    public correlationId: string;
+    public correlation_id: string;
     public source: string;
     public type: string;
     public severity: EventLogSeverityV1;

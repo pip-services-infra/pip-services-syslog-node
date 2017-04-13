@@ -40,7 +40,8 @@
         "pip-services-commons-node": "^2.0.0",
         "pip-services-container-node": "^2.0.0",
         "pip-services-data-node": "^2.0.0",
-        "pip-services-net-node": "^2.0.0"
+        "pip-services-net-node": "^2.0.0",
+        "pip-services-aws-node": "^1.0.0"
     },
     "devDependencies": {
         "@types/node": "*",
@@ -54,7 +55,6 @@
         "restify": "^4.3.0",
         "chai": "*",
         "matcha": "*",
-        "memjs": "*",
         "mocha": "*"
     }
 }
