@@ -19,7 +19,7 @@ class EventLogCommandSet extends pip_services_commons_node_1.CommandSet {
     }
     makeGetEventsCommand() {
         return new pip_services_commons_node_2.Command("get_events", new pip_services_commons_node_5.ObjectSchema(true)
-            .withOptionalProperty('fitler', new pip_services_commons_node_6.FilterParamsSchema())
+            .withOptionalProperty('filter', new pip_services_commons_node_6.FilterParamsSchema())
             .withOptionalProperty('paging', new pip_services_commons_node_7.PagingParamsSchema()), (correlationId, args, callback) => {
             let filter = pip_services_commons_node_3.FilterParams.fromValue(args.get("filter"));
             let paging = pip_services_commons_node_4.PagingParams.fromValue(args.get("paging"));
