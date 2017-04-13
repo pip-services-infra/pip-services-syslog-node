@@ -6,7 +6,6 @@ import { Descriptor } from 'pip-services-commons-node';
 import { ConfigParams } from 'pip-services-commons-node';
 import { References } from 'pip-services-commons-node';
 import { ConsoleLogger } from 'pip-services-commons-node';
-import { SenecaInstance } from 'pip-services-net-node';
 
 import { SystemEventV1 } from '../../src/data/version1/SystemEventV1';
 import { EventLogTypeV1 } from '../../src/data/version1/EventLogTypeV1';
@@ -30,7 +29,7 @@ let EVENT2: SystemEventV1 = new SystemEventV1(
     'test error'
 );
 
-suite('EventLogLambda', ()=> {
+suite('EventLogLambdaFunction', ()=> {
     let lambda: EventLogLambdaFunction;
 
     suiteSetup((done) => {

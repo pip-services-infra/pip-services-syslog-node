@@ -56,7 +56,7 @@ Example of microservice configuration
   connection:
     protocol: "http"
     host: "0.0.0.0"
-    port: 3000
+    port: 8080
 ```
  
 For more information on the microservice configuration see [Configuration Guide](Configuration.md).
@@ -95,7 +95,7 @@ var config = {
     connection: {
         protocol: 'http',
         host: 'localhost', 
-        port: 8003
+        port: 8080
     }
 };
 ```
