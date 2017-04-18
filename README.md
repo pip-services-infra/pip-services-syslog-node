@@ -23,6 +23,49 @@ This microservice has no dependencies on other microservices.
   - [HTTP Version 1](doc/HttpProtocolV1.md)
   - [Seneca Version 1](doc/SenecaProtocolV1.md)
 
+##  Contract
+
+Logical contract of the microservice is presented below. For physical implementation (HTTP/REST, Thrift, Seneca, Lambda, etc.),
+please, refer to documentation of the specific protocol.
+
+```typescript
+class SystemEventV1 implements IStringIdentifiable {
+    public id: string;
+    public time: Date;
+    public correlation_id: string;
+    public source: string;
+    public type: string;
+    public severity: EventLogSeverityV1;
+    public message: string;
+    public details: StringValueMap;
+
+}
+
+class EventLogTypeV1
+{
+    public static readonly Restart: string = "restart";
+    public static readonly Failure: string = "failure";
+    public static readonly Warning: string = "warning";
+    public static readonly Transaction: string = "transaction";
+    public static readonly Other: string = "other";
+}
+
+enum EventLogSeverityV1
+{
+    Critical = 0,
+    Important = 500,
+    Informational = 1000
+}
+
+interface IEventLogV1 {
+    getEvents(correlationId: string, filter: FilterParams, paging: PagingParams, 
+        callback: (err: any, page: DataPage<SystemEventV1>) => void): void;
+    
+    logEvent(correlationId: string, event: SystemEventV1, 
+        callback?: (err: any, event: SystemEventV1) => void): void;
+}
+```
+
 ## Download
 
 Right now the only way to get the microservice is to check it out directly from github repository
