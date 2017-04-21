@@ -1,1 +1,1 @@
-export { EventLogFactory } from './EventLogFactory';
+export { EventLogServiceFactory } from './EventLogServiceFactory';

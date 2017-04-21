@@ -8,7 +8,7 @@ import { EventLogController } from '../logic/EventLogController';
 import { EventLogHttpServiceV1 } from '../services/version1/EventLogHttpServiceV1';
 import { EventLogSenecaServiceV1 } from '../services/version1/EventLogSenecaServiceV1'; 
 
-export class EventLogFactory extends Factory {
+export class EventLogServiceFactory extends Factory {
 	public static Descriptor = new Descriptor("pip-services-eventlog", "factory", "default", "default", "1.0");
 	public static MemoryPersistenceDescriptor = new Descriptor("pip-services-eventlog", "persistence", "memory", "*", "1.0");
 	public static FilePersistenceDescriptor = new Descriptor("pip-services-eventlog", "persistence", "file", "*", "1.0");
@@ -19,12 +19,12 @@ export class EventLogFactory extends Factory {
 	
 	constructor() {
 		super();
-		this.registerAsType(EventLogFactory.MemoryPersistenceDescriptor, EventLogMemoryPersistence);
-		this.registerAsType(EventLogFactory.FilePersistenceDescriptor, EventLogFilePersistence);
-		this.registerAsType(EventLogFactory.MongoDbPersistenceDescriptor, EventLogMongoDbPersistence);
-		this.registerAsType(EventLogFactory.ControllerDescriptor, EventLogController);
-		this.registerAsType(EventLogFactory.SenecaServiceDescriptor, EventLogSenecaServiceV1);
-		this.registerAsType(EventLogFactory.HttpServiceDescriptor, EventLogHttpServiceV1);
+		this.registerAsType(EventLogServiceFactory.MemoryPersistenceDescriptor, EventLogMemoryPersistence);
+		this.registerAsType(EventLogServiceFactory.FilePersistenceDescriptor, EventLogFilePersistence);
+		this.registerAsType(EventLogServiceFactory.MongoDbPersistenceDescriptor, EventLogMongoDbPersistence);
+		this.registerAsType(EventLogServiceFactory.ControllerDescriptor, EventLogController);
+		this.registerAsType(EventLogServiceFactory.SenecaServiceDescriptor, EventLogSenecaServiceV1);
+		this.registerAsType(EventLogServiceFactory.HttpServiceDescriptor, EventLogHttpServiceV1);
 	}
 	
 }
