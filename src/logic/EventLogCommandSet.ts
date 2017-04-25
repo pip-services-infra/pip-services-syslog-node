@@ -13,12 +13,12 @@ import { DateTimeConverter } from 'pip-services-commons-node';
 
 import { SystemEventV1 } from '../data/version1/SystemEventV1';
 import { SystemEventV1Schema } from '../data/version1/SystemEventV1Schema';
-import { IEventLogBusinessLogic } from './IEventLogBusinessLogic';
+import { IEventLogController } from './IEventLogController';
 
 export class EventLogCommandSet extends CommandSet {
-    private _logic: IEventLogBusinessLogic;
+    private _logic: IEventLogController;
 
-	constructor(logic: IEventLogBusinessLogic) {
+	constructor(logic: IEventLogController) {
 		super();
 
 		this._logic = logic;

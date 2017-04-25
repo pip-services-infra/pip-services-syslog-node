@@ -8,8 +8,8 @@ import { DataPage } from 'pip-services-commons-node';
 import { ICommandable } from 'pip-services-commons-node';
 import { CommandSet } from 'pip-services-commons-node';
 import { SystemEventV1 } from '../data/version1/SystemEventV1';
-import { IEventLogBusinessLogic } from './IEventLogBusinessLogic';
-export declare class EventLogController implements IConfigurable, IReferenceable, ICommandable, IEventLogBusinessLogic {
+import { IEventLogController } from './IEventLogController';
+export declare class EventLogController implements IConfigurable, IReferenceable, ICommandable, IEventLogController {
     private static _defaultConfig;
     private _dependencyResolver;
     private _persistence;

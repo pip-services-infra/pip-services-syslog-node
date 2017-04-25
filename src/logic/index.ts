@@ -1,2 +1,2 @@
-export { IEventLogBusinessLogic } from './IEventLogBusinessLogic';
+export { IEventLogController } from './IEventLogController';
 export { EventLogController } from './EventLogController';

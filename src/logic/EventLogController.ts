@@ -12,10 +12,10 @@ import { CommandSet } from 'pip-services-commons-node';
 
 import { SystemEventV1 } from '../data/version1/SystemEventV1';
 import { IEventLogPersistence } from '../persistence/IEventLogPersistence';
-import { IEventLogBusinessLogic } from './IEventLogBusinessLogic';
+import { IEventLogController } from './IEventLogController';
 import { EventLogCommandSet } from './EventLogCommandSet';
 
-export class EventLogController implements IConfigurable, IReferenceable, ICommandable, IEventLogBusinessLogic {
+export class EventLogController implements IConfigurable, IReferenceable, ICommandable, IEventLogController {
     private static _defaultConfig: ConfigParams = ConfigParams.fromTuples(
         'dependencies.persistence', 'pip-services-eventlog:persistence:*:*:1.0'
     );

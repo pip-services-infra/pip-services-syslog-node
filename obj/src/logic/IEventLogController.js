@@ -1,3 +1,3 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-//# sourceMappingURL=IEventLogBusinessLogic.js.map
+//# sourceMappingURL=IEventLogController.js.map
