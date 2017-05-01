@@ -11,6 +11,7 @@ import { ICommandable } from 'pip-services-commons-node';
 import { CommandSet } from 'pip-services-commons-node';
 
 import { SystemEventV1 } from '../data/version1/SystemEventV1';
+import { EventLogSeverityV1 } from '../data/version1/EventLogSeverityV1';
 import { IEventLogPersistence } from '../persistence/IEventLogPersistence';
 import { IEventLogController } from './IEventLogController';
 import { EventLogCommandSet } from './EventLogCommandSet';
@@ -45,6 +46,8 @@ export class EventLogController implements IConfigurable, IReferenceable, IComma
     }
 
     public logEvent(correlationId: string, event: SystemEventV1, callback: (err: any) => void): void {
+        event.severity = event.severity || EventLogSeverityV1.Informational;
+        event.time = event.time || new Date();
         this._persistence.create(correlationId, event, callback);
     }
     

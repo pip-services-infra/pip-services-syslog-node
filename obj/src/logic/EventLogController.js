@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const pip_services_commons_node_1 = require("pip-services-commons-node");
 const pip_services_commons_node_2 = require("pip-services-commons-node");
+const EventLogSeverityV1_1 = require("../data/version1/EventLogSeverityV1");
 const EventLogCommandSet_1 = require("./EventLogCommandSet");
 class EventLogController {
     constructor() {
@@ -23,6 +24,8 @@ class EventLogController {
         this._persistence.getPageByFilter(correlationId, filter, paging, callback);
     }
     logEvent(correlationId, event, callback) {
+        event.severity = event.severity || EventLogSeverityV1_1.EventLogSeverityV1.Informational;
+        event.time = event.time || new Date();
         this._persistence.create(correlationId, event, callback);
     }
 }
