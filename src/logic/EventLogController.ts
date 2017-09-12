@@ -45,7 +45,8 @@ export class EventLogController implements IConfigurable, IReferenceable, IComma
         this._persistence.getPageByFilter(correlationId, filter, paging, callback);
     }
 
-    public logEvent(correlationId: string, event: SystemEventV1, callback: (err: any) => void): void {
+    public logEvent(correlationId: string, event: SystemEventV1,
+        callback: (err: any, event: SystemEventV1) => void): void {
         event.severity = event.severity || EventLogSeverityV1.Informational;
         event.time = event.time || new Date();
         this._persistence.create(correlationId, event, callback);

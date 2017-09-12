@@ -18,5 +18,5 @@ export declare class EventLogController implements IConfigurable, IReferenceable
     setReferences(references: IReferences): void;
     getCommandSet(): CommandSet;
     getEvents(correlationId: string, filter: FilterParams, paging: PagingParams, callback: (err: any, page: DataPage<SystemEventV1>) => void): void;
-    logEvent(correlationId: string, event: SystemEventV1, callback: (err: any) => void): void;
+    logEvent(correlationId: string, event: SystemEventV1, callback: (err: any, event: SystemEventV1) => void): void;
 }

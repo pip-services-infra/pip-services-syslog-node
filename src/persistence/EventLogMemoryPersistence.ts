@@ -59,11 +59,11 @@ export class EventLogMemoryPersistence
                 return false;
             if (type != null && type != item.type)
                 return false;
-            if (minSeverity != null && item.severity >= minSeverity)
+            if (minSeverity != null && item.severity < minSeverity)
                 return false;
-            if (fromTime != null && item.time >= fromTime)
+            if (fromTime != null && item.time < fromTime)
                 return false;
-            if (toTime != null && item.time < toTime)
+            if (toTime != null && item.time >= toTime)
                 return false;
             return true;
         };

@@ -12,12 +12,12 @@
     "main": "./obj/src/index.js",
     "typings": "./obj/src/index.d.ts",
     "keywords": [
-        "pip.services", 
+        "pip.services",
         "event",
         "logging"
     ],
     "noAnalyze": true,
-    "repository" : {
+    "repository": {
         "type": "git",
         "url": "ssh://git@github.com:pip-services-infrastructure/pip-services-eventlog-node.git"
     },
