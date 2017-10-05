@@ -37,9 +37,9 @@
         "rebenchmark": "tsc && matcha -R clean -I tdd ./obj/benchmark/run.js"
     },
     "dependencies": {
-        "pip-services-commons-node": "^2.0.0",
+        "pip-services-commons-node": "^2.7.0",
         "pip-services-container-node": "^2.0.0",
-        "pip-services-data-node": "^2.0.0",
+        "pip-services-data-node": "^2.5.0",
         "pip-services-net-node": "^2.0.0",
         "pip-services-aws-node": "^1.0.0"
     },

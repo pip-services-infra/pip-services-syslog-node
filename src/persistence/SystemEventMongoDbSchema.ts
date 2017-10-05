@@ -6,7 +6,7 @@ export let SystemEventMongoDbSchema = function(collection?: string) {
 
     let schema = new Schema(
         {
-            _id: { type: String, unique: true },
+            _id: { type: String },
             time: { type: Date, required: true, index: true },
             correlation_id: { type: String, required: false },
             source: { type: String, required: false, index: true },

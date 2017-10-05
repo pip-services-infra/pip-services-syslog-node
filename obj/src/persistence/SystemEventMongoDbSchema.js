@@ -5,7 +5,7 @@ let Mixed = mongoose_1.Schema.Types.Mixed;
 exports.SystemEventMongoDbSchema = function (collection) {
     collection = collection || 'event_log';
     let schema = new mongoose_1.Schema({
-        _id: { type: String, unique: true },
+        _id: { type: String },
         time: { type: Date, required: true, index: true },
         correlation_id: { type: String, required: false },
         source: { type: String, required: false, index: true },
