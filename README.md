@@ -79,7 +79,7 @@ as zip downloadable archieves.
 ## Run
 
 Add **config.json** file to the root of the microservice folder and set configuration parameters.
-As the starting point you can use example configuration from **config.example.yaml** file. 
+As the starting point you can use example configuration from **config.example.yml** file. 
 
 Example of microservice configuration
 ```yaml

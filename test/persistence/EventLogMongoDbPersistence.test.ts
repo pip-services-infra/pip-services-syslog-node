@@ -8,7 +8,7 @@ suite('EventLogMongoDbPersistence', ()=> {
     let fixture: EventLogPersistenceFixture;
 
     setup((done) => {
-        let config = YamlConfigReader.readConfig(null, './config/test_connections.yaml', null);
+        let config = YamlConfigReader.readConfig(null, './config/test_connections.yml', null);
         let dbConfig = config.getSection('mongodb');
 
         persistence = new EventLogMongoDbPersistence();
