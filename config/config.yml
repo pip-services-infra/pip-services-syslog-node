@@ -9,19 +9,19 @@
 
 {{#if MEMORY_ENABLED}}
 # In-memory persistence. Use only for testing!
-- descriptor: "pip-services-dashboards:persistence:memory:default:1.0"
+- descriptor: "pip-services-eventlog:persistence:memory:default:1.0"
 {{/if}}
 
 {{#if FILE_ENABLED}}
 # File persistence. Use it for testing of for simple standalone deployments
-- descriptor: "pip-services-dashboards:persistence:file:default:1.0"
-  path: {{FILE_PATH}}{{#unless FILE_PATH}}"../data/dashboards.json"{{/unless}}
+- descriptor: "pip-services-eventlog:persistence:file:default:1.0"
+  path: {{FILE_PATH}}{{#unless FILE_PATH}}"../data/eventlog.json"{{/unless}}
 {{/if}}
 
 {{#if MONGO_ENABLED}}
 # MongoDB Persistence
-- descriptor: "pip-services-dashboards:persistence:mongodb:default:1.0"
-  collection: {{MONGO_COLLECTION}}{{#unless MONGO_COLLECTION}}dashboards{{/unless}}
+- descriptor: "pip-services-eventlog:persistence:mongodb:default:1.0"
+  collection: {{MONGO_COLLECTION}}{{#unless MONGO_COLLECTION}}eventlog{{/unless}}
   connection:
     uri: {{{MONGO_SERVICE_URI}}}
     host: {{{MONGO_SERVICE_HOST}}}{{#unless MONGO_SERVICE_HOST}}localhost{{/unless}}
@@ -34,14 +34,14 @@
 
 {{#unless MEMORY_ENABLED}}{{#unless FILE_ENABLED}}{{#unless MONGO_ENABLED}}
 # Default in-memory persistence
-- descriptor: "pip-services-dashboards:persistence:memory:default:1.0"
+- descriptor: "pip-services-eventlog:persistence:memory:default:1.0"
 {{/unless}}{{/unless}}{{/unless}}
 
 # Default controller
-- descriptor: "pip-services-dashboards:controller:default:default:1.0"
+- descriptor: "pip-services-eventlog:controller:default:default:1.0"
 
 # HTTP endpoint version 1.0
-- descriptor: "pip-services-dashboards:service:http:default:1.0"
+- descriptor: "pip-services-eventlog:service:http:default:1.0"
   connection:
     protocol: "http"
     host: "0.0.0.0"
