@@ -1,0 +1,13 @@
+FROM pipdevs/node:8.4.0
+
+# set working directory
+WORKDIR /app
+
+# copy project file
+COPY package.json .
+
+# install ALL node_modeles, including 'devDependencies'
+RUN npm install
+
+# copy the entire project
+COPY . .

@@ -1,0 +1,37 @@
+language: node_js
+sudo: true
+node_js:
+  - "node"
+
+services:
+  - mongodb
+
+branches:
+  except:
+    - /^v[0-9]/
+
+if: tag IS blank
+
+env:
+  DOCKER_USER=krdmitriy
+  NPM_USER=pipdeveloper
+  NPM_EMAIL=pipdevs@gmail.com
+  REGISTRY=pipdevs
+
+before_install:
+  - ./build.sh
+
+install:
+  - ./test.sh
+  - ./package.sh
+  - ./publish.sh
+
+script: 
+  echo "npm test temporarily disabled"
+
+after_success:
+  - ./tag.sh
+  - ./release.sh
+
+after_script:
+  - ./clean.sh
