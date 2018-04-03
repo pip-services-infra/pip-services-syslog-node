@@ -37,6 +37,7 @@
         "rebenchmark": "tsc && matcha -R clean -I tdd ./obj/benchmark/run.js"
     },
     "dependencies": {
+        "mongoose": "^4.12.0",
         "pip-services-commons-node": "^2.7.0",
         "pip-services-container-node": "^2.0.0",
         "pip-services-data-node": "^2.5.0",
