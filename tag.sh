@@ -10,7 +10,7 @@ git config --global user.email "pipdevs@gmail.com"
 git config --global user.name "pipdeveloper" 
 
 git remote rm origin 
-git remote add origin "https://pipdeveloper:${GITHUB_API_KEY}@github.com/pip-services-content/${COMPONENT}.git"
+git remote add origin "https://pipdeveloper:${GITHUB_API_KEY}@github.com/pip-services-infrastructure/${COMPONENT}.git"
 
 # Set git tag
 git tag ${TAG} -a -m "Generated tag from TravisCI for build #$TRAVIS_BUILD_NUMBER"
