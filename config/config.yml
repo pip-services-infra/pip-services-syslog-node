@@ -51,7 +51,7 @@
 # ElasticSearch logger
 - descriptor: "pip-services:logger:elasticsearch:default:1.0"
   level: "info"
-  index: "pip-services-statistics"
+  index: "pip-services-eventlog"
   connection:
     protocol: http
     host: {{ELASTICSEARCH_LOGGING_SERVICE_HOST}}
