@@ -42,7 +42,8 @@
         "pip-services-container-node": "^2.0.0",
         "pip-services-data-node": "^2.5.0",
         "pip-services-net-node": "^2.0.0",
-        "pip-services-aws-node": "^1.0.0"
+        "pip-services-aws-node": "^1.0.0",
+        "pip-services-oss-node": "^1.0.0"
     },
     "devDependencies": {
         "@types/node": "*",

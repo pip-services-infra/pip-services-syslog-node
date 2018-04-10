@@ -46,3 +46,14 @@
     protocol: "http"
     host: "0.0.0.0"
     port: 8080
+
+{{#if ELASTICSEARCH_LOGGING_ENABLED}}
+# ElasticSearch logger
+- descriptor: "pip-services:logger:elasticsearch:default:1.0"
+  level: "info"
+  index: "pip-services-statistics"
+  connection:
+    protocol: http
+    host: {{ELASTICSEARCH_LOGGING_SERVICE_HOST}}
+    port: {{ELASTICSEARCH_LOGGING_SERVICE_PORT}}
+{{/if}}

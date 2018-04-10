@@ -21,4 +21,4 @@ awk -F'["]' -v OFS='"'  '/"version":/{
     }
 ;1' component.json > >(sleep 1 && cat > component.json)
 
-npm publish
+npm publish --skip-git
