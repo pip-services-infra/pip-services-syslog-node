@@ -4,3 +4,4 @@
 /data/eventlog.test.json
 /data/eventlog.json
 /obj/test
+/docker/id_rsa*
