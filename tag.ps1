@@ -13,7 +13,7 @@ if ($env:GIT_USER -ne $null -and $env:GIT_EMAIL -ne $null) {
     git config --global user.email $env:GIT_EMAIL
 
     git remote rm origin 
-    git remote add origin "https://$($env:GIT_USER):$($env:GITHUB_API_KEY)@github.com/pip-services-content/$($component.name).git"
+    git remote add origin "https://$($env:GIT_USER):$($env:GITHUB_API_KEY)@github.com/pip-services-infranstructure/$($component.name).git"
 }
 
 git add ./obj/*
