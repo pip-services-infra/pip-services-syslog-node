@@ -1,4 +1,6 @@
 {
     "name": "pip-services-eventlog-node",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "registry": "pipdevs",
+    "build": 7
 }

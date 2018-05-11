@@ -12,26 +12,23 @@ branches:
 
 if: tag IS blank
 
-env:
-  DOCKER_USER=krdmitriy
-  NPM_USER=pipdeveloper
-  NPM_EMAIL=pipdevs@gmail.com
-  REGISTRY=pipdevs
-
 before_install:
-  - ./build.sh
+  - sed -i -e "s/\"build\":\s[0-9]*/\"build\":"' '"$TRAVIS_BUILD_NUMBER/" component.json
 
 install:
-  - ./test.sh
-  - ./package.sh
-  - ./publish.sh
+  - curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+  - curl https://packages.microsoft.com/config/ubuntu/14.04/prod.list | sudo tee /etc/apt/sources.list.d/microsoft.list
+  - sudo apt-get update
+  - sudo apt-get install -y powershell
+  - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
 
 script: 
-  echo "npm test temporarily disabled"
-
-after_success:
-  - ./tag.sh
-  - ./release.sh
+  - ./build.ps1
+  - ./test.ps1
+  - ./package.ps1
+  - ./tag.ps1
+  - ./publish.ps1
+  - ./release.ps1
 
 after_script:
-  - ./clean.sh
+  - ./clean.ps1
