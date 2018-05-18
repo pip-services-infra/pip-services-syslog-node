@@ -3,7 +3,7 @@ import { CommandableHttpService } from 'pip-services-net-node';
 
 export class EventLogHttpServiceV1 extends CommandableHttpService {
     public constructor() {
-        super('eventlog');
+        super('v1/eventlog');
         this._dependencyResolver.put('controller', new Descriptor('pip-services-eventlog', 'controller', 'default', '*', '1.0'));
     }
 }

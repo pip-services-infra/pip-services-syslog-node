@@ -74,7 +74,7 @@ suite('EventLogHttpServiceV1', ()=> {
         async.series([
         // Create one activity
             (callback) => {
-                rest.post('/eventlog/log_event',
+                rest.post('/v1/eventlog/log_event',
                     {
                         event: EVENT1
                     },
@@ -94,7 +94,7 @@ suite('EventLogHttpServiceV1', ()=> {
             },
         // Create another activity
             (callback) => {
-                rest.post('/eventlog/log_event',
+                rest.post('/v1/eventlog/log_event',
                     {
                         event: EVENT2
                     },
@@ -114,7 +114,7 @@ suite('EventLogHttpServiceV1', ()=> {
             },
         // Get all activities
             (callback) => {
-                rest.post('/eventlog/get_events',
+                rest.post('/v1/eventlog/get_events',
                     {},
                     (err, req, res, page) => {
                         assert.isNull(err);
