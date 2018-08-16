@@ -43,7 +43,6 @@
         "pip-services-container-node": "^3.0.0",
         "pip-services-data-node": "^3.0.0",
         "pip-services-aws-node": "^3.0.0",
-        "pip-services-messaging-node": "^3.0.0",
         "pip-services-rpc-node": "^3.0.0",
         "pip-services-mongodb-node": "^3.0.0",
         "pip-services-seneca-node": "^3.0.0"
