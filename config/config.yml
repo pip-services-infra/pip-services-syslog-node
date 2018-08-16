@@ -8,16 +8,6 @@
 - descriptor: "pip-services:logger:console:default:1.0"
   level: "trace"
 
-{{#if ELASTICSEARCH_LOGGING_ENABLED}}
-# ElasticSearch logger
-- descriptor: "pip-services:logger:elasticsearch:default:1.0"
-  level: "info"
-  connection:
-    protocol: http
-    host: {{ELASTICSEARCH_LOGGING_SERVICE_HOST}}
-    port: {{ELASTICSEARCH_LOGGING_SERVICE_PORT}}
-{{/if}}
-
 # Performance counters that posts values to log
 - descriptor: "pip-services:counters:log:default:1.0"
   level: "trace"
@@ -25,17 +15,6 @@
 {{#if MEMORY_ENABLED}}
 # In-memory persistence. Use only for testing!
 - descriptor: "pip-services-eventlog:persistence:memory:default:1.0"
-{{/if}}
-
-# Prometheus performance counters
-{{#if PUSHGATEWAY_METRICS_ENABLED}}
-- descriptor: "pip-services:counters:prometheus:default:1.0"
-  level: "trace"
-  interval: "30000"  
-  connection:
-    protocol: http
-    host: {{PUSHGATEWAY_METRICS_SERVICE_HOST}}
-    port: {{PUSHGATEWAY_METRICS_SERVICE_PORT}}
 {{/if}}
 
 {{#if FILE_ENABLED}}
@@ -81,10 +60,3 @@
 
 # Status service
 - descriptor: "pip-services:status-service:http:default:1.0"
-
-# Prometheus metrics service
-- descriptor: "pip-services:metrics-service:prometheus:default:1.0"
-  connection:
-    protocol: "http"
-    host: "0.0.0.0"
-    port: 8082

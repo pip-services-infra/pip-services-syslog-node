@@ -5,7 +5,7 @@ let assert = require('chai').assert;
 import { Descriptor } from 'pip-services-commons-node';
 import { ConfigParams } from 'pip-services-commons-node';
 import { References } from 'pip-services-commons-node';
-import { ConsoleLogger } from 'pip-services-commons-node';
+import { ConsoleLogger } from 'pip-services-components-node';
 
 import { SystemEventV1 } from '../../src/data/version1/SystemEventV1';
 import { EventLogTypeV1 } from '../../src/data/version1/EventLogTypeV1';
@@ -34,7 +34,7 @@ suite('EventLogLambdaFunction', ()=> {
 
     suiteSetup((done) => {
         let config = ConfigParams.fromTuples(
-            'logger.descriptor', 'pip-services-commons:logger:console:default:1.0',
+            'logger.descriptor', 'pip-services:logger:console:default:1.0',
             'persistence.descriptor', 'pip-services-eventlog:persistence:memory:default:1.0',
             'controller.descriptor', 'pip-services-eventlog:controller:default:default:1.0'
         );

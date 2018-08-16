@@ -1,5 +1,5 @@
 import { Descriptor } from 'pip-services-commons-node';
-import { CommandableSenecaService } from 'pip-services-net-node';
+import { CommandableSenecaService } from 'pip-services-seneca-node';
 
 export class EventLogSenecaServiceV1 extends CommandableSenecaService {
     public constructor() {
