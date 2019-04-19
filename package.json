@@ -54,7 +54,6 @@
         "@types/mocha": "*",
         "@types/mongodb": "^2.1.38",
         "@types/mongoose": "^4.7.4",
-        "seneca": "^3.3.0",
         "restify": "^4.3.0",
         "chai": "*",
         "matcha": "*",
