@@ -1,8 +1,8 @@
-import { IReferences } from 'pip-services-commons-node';
-import { ProcessContainer } from 'pip-services-container-node';
+import { IReferences } from 'pip-services3-commons-node';
+import { ProcessContainer } from 'pip-services3-container-node';
 
 import { EventLogServiceFactory } from '../build/EventLogServiceFactory';
-import { DefaultRpcFactory } from 'pip-services-rpc-node';
+import { DefaultRpcFactory } from 'pip-services3-rpc-node';
 
 export class EventLogProcess extends ProcessContainer {
 

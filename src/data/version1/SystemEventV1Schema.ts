@@ -1,5 +1,5 @@
-import { ObjectSchema } from 'pip-services-commons-node';
-import { TypeCode } from 'pip-services-commons-node';
+import { ObjectSchema } from 'pip-services3-commons-node';
+import { TypeCode } from 'pip-services3-commons-node';
 
 export class SystemEventV1Schema extends ObjectSchema {
     public constructor() {

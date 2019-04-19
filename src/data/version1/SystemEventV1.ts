@@ -1,6 +1,6 @@
-import { IStringIdentifiable } from 'pip-services-commons-node';
-import { IdGenerator } from 'pip-services-commons-node';
-import { StringValueMap } from 'pip-services-commons-node';
+import { IStringIdentifiable } from 'pip-services3-commons-node';
+import { IdGenerator } from 'pip-services3-commons-node';
+import { StringValueMap } from 'pip-services3-commons-node';
 
 import { EventLogSeverityV1 } from './EventLogSeverityV1';
 import { EventLogTypeV1 } from './EventLogTypeV1';

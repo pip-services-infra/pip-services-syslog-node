@@ -1,4 +1,4 @@
-import { CommandableLambdaFunction } from 'pip-services-aws-node';
+import { CommandableLambdaFunction } from 'pip-services3-aws-node';
 export declare class EventLogLambdaFunction extends CommandableLambdaFunction {
     constructor();
 }

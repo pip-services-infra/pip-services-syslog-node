@@ -2,10 +2,10 @@ let _ = require('lodash');
 let async = require('async');
 let assert = require('chai').assert;
 
-import { Descriptor } from 'pip-services-commons-node';
-import { ConfigParams } from 'pip-services-commons-node';
-import { References } from 'pip-services-commons-node';
-import { ConsoleLogger } from 'pip-services-components-node';
+import { Descriptor } from 'pip-services3-commons-node';
+import { ConfigParams } from 'pip-services3-commons-node';
+import { References } from 'pip-services3-commons-node';
+import { ConsoleLogger } from 'pip-services3-components-node';
 
 import { SystemEventV1 } from '../../src/data/version1/SystemEventV1';
 import { EventLogTypeV1 } from '../../src/data/version1/EventLogTypeV1';

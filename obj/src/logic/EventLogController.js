@@ -1,12 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const pip_services_commons_node_1 = require("pip-services-commons-node");
-const pip_services_commons_node_2 = require("pip-services-commons-node");
+const pip_services3_commons_node_1 = require("pip-services3-commons-node");
+const pip_services3_commons_node_2 = require("pip-services3-commons-node");
 const EventLogSeverityV1_1 = require("../data/version1/EventLogSeverityV1");
 const EventLogCommandSet_1 = require("./EventLogCommandSet");
 class EventLogController {
     constructor() {
-        this._dependencyResolver = new pip_services_commons_node_2.DependencyResolver(EventLogController._defaultConfig);
+        this._dependencyResolver = new pip_services3_commons_node_2.DependencyResolver(EventLogController._defaultConfig);
     }
     configure(config) {
         this._dependencyResolver.configure(config);
@@ -29,6 +29,6 @@ class EventLogController {
         this._persistence.create(correlationId, event, callback);
     }
 }
-EventLogController._defaultConfig = pip_services_commons_node_1.ConfigParams.fromTuples('dependencies.persistence', 'pip-services-eventlog:persistence:*:*:1.0');
+EventLogController._defaultConfig = pip_services3_commons_node_1.ConfigParams.fromTuples('dependencies.persistence', 'pip-services-eventlog:persistence:*:*:1.0');
 exports.EventLogController = EventLogController;
 //# sourceMappingURL=EventLogController.js.map

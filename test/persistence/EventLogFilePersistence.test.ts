@@ -1,4 +1,4 @@
-import { ConfigParams } from 'pip-services-commons-node';
+import { ConfigParams } from 'pip-services3-commons-node';
 
 import { EventLogFilePersistence } from '../../src/persistence/EventLogFilePersistence';
 import { EventLogPersistenceFixture } from './EventLogPersistenceFixture';
