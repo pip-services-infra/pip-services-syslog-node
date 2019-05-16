@@ -59,7 +59,7 @@ suite('EventLogLambdaFunction', ()=> {
                     {
                         role: 'eventlog',
                         cmd: 'log_event',
-                        event: EVENT1
+                        eventlog: EVENT1
                     },
                     (err, event) => {
                         assert.isNull(err);
@@ -82,7 +82,7 @@ suite('EventLogLambdaFunction', ()=> {
                     {
                         role: 'eventlog',
                         cmd: 'log_event',
-                        event: EVENT2
+                        eventlog: EVENT2
                     },
                     (err, event) => {
                         assert.isNull(err);

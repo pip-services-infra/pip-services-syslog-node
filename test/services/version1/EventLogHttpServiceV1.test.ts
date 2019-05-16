@@ -76,7 +76,7 @@ suite('EventLogHttpServiceV1', ()=> {
             (callback) => {
                 rest.post('/v1/eventlog/log_event',
                     {
-                        event: EVENT1
+                        eventlog: EVENT1
                     },
                     (err, req, res, event) => {
                         assert.isNull(err);
@@ -96,7 +96,7 @@ suite('EventLogHttpServiceV1', ()=> {
             (callback) => {
                 rest.post('/v1/eventlog/log_event',
                     {
-                        event: EVENT2
+                        eventlog: EVENT2
                     },
                     (err, req, res, event) => {
                         assert.isNull(err);

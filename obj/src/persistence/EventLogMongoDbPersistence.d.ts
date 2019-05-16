@@ -5,6 +5,6 @@ import { SystemEventV1 } from '../data/version1/SystemEventV1';
 import { IEventLogPersistence } from './IEventLogPersistence';
 export declare class EventLogMongoDbPersistence extends IdentifiableMongoDbPersistence<SystemEventV1, string> implements IEventLogPersistence {
     constructor();
-    private composeFilter(filter);
+    private composeFilter;
     getPageByFilter(correlationId: string, filter: FilterParams, paging: PagingParams, callback: any): void;
 }
