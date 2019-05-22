@@ -2,9 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 let _ = require('lodash');
 const pip_services3_commons_node_1 = require("pip-services3-commons-node");
-const pip_services3_mongodb_node_1 = require("pip-services3-mongodb-node");
+const pip_services3_mongoose_node_1 = require("pip-services3-mongoose-node");
 const SystemEventMongoDbSchema_1 = require("./SystemEventMongoDbSchema");
-class EventLogMongoDbPersistence extends pip_services3_mongodb_node_1.IdentifiableMongoDbPersistence {
+class EventLogMongoDbPersistence extends pip_services3_mongoose_node_1.IdentifiableMongoosePersistence {
     constructor() {
         super('event_log', SystemEventMongoDbSchema_1.SystemEventMongoDbSchema());
     }
