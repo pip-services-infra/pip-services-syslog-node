@@ -3,18 +3,17 @@ let _ = require('lodash');
 import { FilterParams } from 'pip-services3-commons-node';
 import { PagingParams } from 'pip-services3-commons-node';
 import { DataPage } from 'pip-services3-commons-node';
-import { IdentifiableMongoosePersistence } from 'pip-services3-mongoose-node';
+import { IdentifiableMongoDbPersistence } from 'pip-services3-mongodb-node';
 
 import { SystemEventV1 } from '../data/version1/SystemEventV1';
 import { IEventLogPersistence } from './IEventLogPersistence';
-import { SystemEventMongoDbSchema } from './SystemEventMongoDbSchema';
 
 export class EventLogMongoDbPersistence 
-    extends IdentifiableMongoosePersistence<SystemEventV1, string> 
+    extends IdentifiableMongoDbPersistence<SystemEventV1, string> 
     implements IEventLogPersistence {
 
     constructor() {
-        super('event_log', SystemEventMongoDbSchema());
+        super('event_log');
     }
 
     private composeFilter(filter: FilterParams): any {

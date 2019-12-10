@@ -17,11 +17,11 @@ class EventLogServiceFactory extends pip_services3_components_node_1.Factory {
         this.registerAsType(EventLogServiceFactory.HttpServiceDescriptor, EventLogHttpServiceV1_1.EventLogHttpServiceV1);
     }
 }
+exports.EventLogServiceFactory = EventLogServiceFactory;
 EventLogServiceFactory.Descriptor = new pip_services3_commons_node_1.Descriptor("pip-services-eventlog", "factory", "default", "default", "1.0");
 EventLogServiceFactory.MemoryPersistenceDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services-eventlog", "persistence", "memory", "*", "1.0");
 EventLogServiceFactory.FilePersistenceDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services-eventlog", "persistence", "file", "*", "1.0");
 EventLogServiceFactory.MongoDbPersistenceDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services-eventlog", "persistence", "mongodb", "*", "1.0");
 EventLogServiceFactory.ControllerDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services-eventlog", "controller", "default", "*", "1.0");
 EventLogServiceFactory.HttpServiceDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services-eventlog", "service", "http", "*", "1.0");
-exports.EventLogServiceFactory = EventLogServiceFactory;
 //# sourceMappingURL=EventLogServiceFactory.js.map

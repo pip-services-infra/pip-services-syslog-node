@@ -1,1 +1,0 @@
-module.exports = require('../obj/src/container/EventLogSenecaPlugin');

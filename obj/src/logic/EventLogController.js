@@ -29,6 +29,6 @@ class EventLogController {
         this._persistence.create(correlationId, event, callback);
     }
 }
-EventLogController._defaultConfig = pip_services3_commons_node_1.ConfigParams.fromTuples('dependencies.persistence', 'pip-services-eventlog:persistence:*:*:1.0');
 exports.EventLogController = EventLogController;
+EventLogController._defaultConfig = pip_services3_commons_node_1.ConfigParams.fromTuples('dependencies.persistence', 'pip-services-eventlog:persistence:*:*:1.0');
 //# sourceMappingURL=EventLogController.js.map
