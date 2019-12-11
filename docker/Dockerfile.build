@@ -1,4 +1,4 @@
-FROM pipdevs/ts-dev:2.5.2
+FROM pipdevs/ts-dev:3.6.2
 
 # set working directory
 WORKDIR /app
