@@ -17,7 +17,7 @@ import { EventLogHttpServiceV1 } from '../../../src/services/version1/EventLogHt
 let httpConfig = ConfigParams.fromTuples(
     "connection.protocol", "http",
     "connection.host", "localhost",
-    "connection.port", 3000
+    "connection.port", 3001
 );
 
 let EVENT1: SystemEventV1 = new SystemEventV1(
@@ -63,7 +63,7 @@ suite('EventLogHttpServiceV1', ()=> {
     });
 
     setup(() => {
-        let url = 'http://localhost:3000';
+        let url = 'http://localhost:3001';
         rest = restify.createJsonClient({ url: url, version: '*' });
     });
     
@@ -76,7 +76,7 @@ suite('EventLogHttpServiceV1', ()=> {
             (callback) => {
                 rest.post('/v1/eventlog/log_event',
                     {
-                        eventlog: EVENT1
+                        event: EVENT1
                     },
                     (err, req, res, event) => {
                         assert.isNull(err);
@@ -96,7 +96,7 @@ suite('EventLogHttpServiceV1', ()=> {
             (callback) => {
                 rest.post('/v1/eventlog/log_event',
                     {
-                        eventlog: EVENT2
+                        event: EVENT2
                     },
                     (err, req, res, event) => {
                         assert.isNull(err);

@@ -46,9 +46,10 @@ export class EventLogCommandSet extends CommandSet {
 		return new Command(
 			"log_event",
 			new ObjectSchema(true)
-				.withRequiredProperty('eventlog' || 'event', new SystemEventV1Schema()),
+				.withOptionalProperty('eventlog', new SystemEventV1Schema())
+				.withOptionalProperty('event', new SystemEventV1Schema()),
 			(correlationId: string, args: Parameters, callback: (err: any, result: any) => void) => {
-				let event: SystemEventV1 = args.get("eventlog" || "event");
+				let event: SystemEventV1 = args.get("event") || args.get("eventlog");
 				event.time = DateTimeConverter.toNullableDateTime(event.time);
 				this._logic.logEvent(correlationId, event, callback);
 			}

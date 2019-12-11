@@ -28,8 +28,9 @@ class EventLogCommandSet extends pip_services3_commons_node_1.CommandSet {
     }
     makeLogEventCommand() {
         return new pip_services3_commons_node_2.Command("log_event", new pip_services3_commons_node_5.ObjectSchema(true)
-            .withRequiredProperty('eventlog' || 'event', new SystemEventV1Schema_1.SystemEventV1Schema()), (correlationId, args, callback) => {
-            let event = args.get("eventlog" || "event");
+            .withOptionalProperty('eventlog', new SystemEventV1Schema_1.SystemEventV1Schema())
+            .withOptionalProperty('event', new SystemEventV1Schema_1.SystemEventV1Schema()), (correlationId, args, callback) => {
+            let event = args.get("event") || args.get("eventlog");
             event.time = pip_services3_commons_node_8.DateTimeConverter.toNullableDateTime(event.time);
             this._logic.logEvent(correlationId, event, callback);
         });
